@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput";
+import { useNavigate } from "react-router-dom";
+import { logUser } from "../../services/apiCalls";
 
 export const Login = () => {
+
+    const navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
         email: "",
@@ -19,6 +23,17 @@ export const Login = () => {
     // useEffect(() => {
     //     console.log(credentials);
     // }, [credentials]);
+
+    const logMe = () => {
+        logUser(credentials)
+            .then((response) => {
+                console.log(response.data);
+                navigate("/profile");
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
 
     return (
         <div className="login-body">
@@ -38,6 +53,7 @@ export const Login = () => {
                 functionProp={functionHandler}
             />
 
+            <div className='buttonSubmit' onClick={logMe}>Log in</div>
         </div>
     )
 }

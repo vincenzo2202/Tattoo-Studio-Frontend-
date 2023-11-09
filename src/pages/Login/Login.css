@@ -5,4 +5,15 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttonSubmit{
+    width: 5em;
+    height: 3em;
+    border: 0.2em solid black;
+    background-color: gray;
+    color: black;
+    border-radius: 1em;
 }
