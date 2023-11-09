@@ -3,6 +3,6 @@ import "./GetWorkers.css"
 
 export const GetWorkers = ()=>{
     return(
-        <div> Soy El GetWorkers </div>
+        <div className="workers-body"> Soy El GetWorkers </div>
     )
 }

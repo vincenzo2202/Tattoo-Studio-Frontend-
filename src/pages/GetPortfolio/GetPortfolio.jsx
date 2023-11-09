@@ -3,6 +3,6 @@ import "./GetPortfolio.css"
 
 export const GetPortfolio = ()=>{
     return(
-        <div> Soy El GetPortfolio </div>
+        <div className="portfolio-body"> Soy El GetPortfolio </div>
     )
 }

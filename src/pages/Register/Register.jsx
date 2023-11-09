@@ -3,6 +3,6 @@ import "./Register.css"
 
 export const Register = ()=>{
     return(
-        <div> Soy El Register </div>
+        <div className="register-body"> Soy El Register </div>
     )
 }

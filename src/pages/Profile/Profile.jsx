@@ -3,6 +3,6 @@ import "./Profile.css"
 
 export const Profile = ()=>{
     return(
-        <div> Soy El Profile </div>
+        <div className="profile-body"> Soy El Profile </div>
     )
 }

@@ -3,6 +3,6 @@ import "./Login.css"
 
 export const Login = ()=>{
     return(
-        <div> Soy El Login </div>
+        <div className="login-body"> Soy El Login </div>
     )
 }
