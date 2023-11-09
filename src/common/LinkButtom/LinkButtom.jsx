@@ -1,5 +1,5 @@
 
-import './LinkButton.css'
+import './LinkButtom.css'
 
 import { useNavigate } from 'react-router-dom';
 

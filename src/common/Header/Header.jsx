@@ -1,13 +1,11 @@
-
 import React from 'react'
 import './Header.css'
-import { LinkButton } from '../LinkButton/LinkButton'
+import { LinkButton } from '../LinkButtom/LinkButtom'
 
 export const Header = () => {
 
-
      return (
-         <div className='headerDesign'>
+         <div className='buttom-container'>
             <LinkButton
                 path={"/home"}
                 title={"Home"}

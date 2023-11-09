@@ -3,6 +3,6 @@ import "./Home.css"
 
 export const Home = ()=>{
     return(
-        <div> Soy El Home </div>
+        <div className="home-body"> Soy El Home </div>
     )
 }

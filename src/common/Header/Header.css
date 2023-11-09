@@ -1,0 +1,8 @@
+.buttom-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 16vh;
+    width: 100vw; 
+}

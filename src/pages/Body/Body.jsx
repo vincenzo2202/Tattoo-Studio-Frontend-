@@ -1,4 +1,3 @@
-
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
@@ -15,7 +14,7 @@ export const Body = () => {
                 <Route path="/login" element={<Login />}/>
                 <Route path="/register" element={<Register />}/>
                 <Route path="/profile" element={<Profile />}/>
-                <Route path="/tattoos" element={<GetPortfolio />}/>
+                <Route path="/portfolio" element={<GetPortfolio />}/>
                 <Route path="/workers" element={<GetWorkers />}/>
             </Routes>
          </>
