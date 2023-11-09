@@ -13,6 +13,8 @@ export const Login = () => {
         password: "",
     });
 
+    const [message, setMessage] = useState(""); 
+
     const functionHandler = (e) => {
         setCredentials((prevState) => ({
             ...prevState,
@@ -20,15 +22,13 @@ export const Login = () => {
         }));
     };
 
-    // useEffect(() => {
-    //     console.log(credentials);
-    // }, [credentials]);
-
     const logMe = () => {
         logUser(credentials)
             .then((response) => {
                 console.log(response.data);
-                navigate("/profile");
+                const { message } = response.data;
+                setMessage(message);
+                // navigate("/profile");
             })
             .catch(error => {
                 console.log(error);
@@ -54,6 +54,8 @@ export const Login = () => {
             />
 
             <div className='buttonSubmit' onClick={logMe}>Log in</div>
+
+            {message && <p> {message}</p>} 
         </div>
     )
 }
