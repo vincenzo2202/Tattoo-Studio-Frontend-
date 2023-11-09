@@ -20,6 +20,14 @@ export const Header = () => {
                 path={"/register"}
                 title={"Register"}
             />
+             <LinkButton
+                path={"/workers"}
+                title={"Workers"}
+            />
+               <LinkButton
+                path={"/tattoos"}
+                title={"Tattoos"}
+            />
          </div>
      )
 }
