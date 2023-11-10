@@ -9,10 +9,6 @@ export const Profile = () => {
     return (
         
             <div className="profile-body"> Soy El Profile </div>
-            
-       
-
-           
-    
+             
     )
 }

@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./Register.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { registerUser } from "../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+
+    const navigate = useNavigate();
+
     const [credentials, setCredentials] = useState({
          full_name: "",
          email: "",
          password: "",
-         phone_number: "" 
+         phone_number: ""
        });
 
     const [message, setMessage] = useState("");
@@ -21,7 +25,12 @@ export const Register = () => {
     };
 
     const SignUp = () => {
-        registerUser(credentials)
+        const credentialsWithNumber = {
+            ...credentials,
+            phone_number: parseInt(credentials.phone_number, 10)
+        };
+
+        registerUser(credentialsWithNumber)
             .then((response) => {
                 console.log(response.data);
                 const { message } = response.data;
@@ -62,7 +71,7 @@ export const Register = () => {
             <CustomInput
                 design={"inputDesign"}
                 type={"number"}
-                name={"Phone"}
+                name={"phone_number"}
                 placeholder={"666666666"}
                 functionProp={functionHandler}
             />
