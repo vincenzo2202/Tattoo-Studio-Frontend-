@@ -13,7 +13,7 @@ export const Login = () => {
         password: "",
     });
 
-    const [message, setMessage] = useState(""); 
+    const [message, setMessage] = useState("");
 
     const functionHandler = (e) => {
         setCredentials((prevState) => ({
@@ -37,25 +37,27 @@ export const Login = () => {
 
     return (
         <div className="login-body">
+            <div className="input-card">
+                <CustomInput
+                    design={"inputDesign"}
+                    type={"email"}
+                    name={"email"}
+                    placeholder={"user@gmail.com"}
+                    functionProp={functionHandler}
+                />
+                <CustomInput
+                    design={"inputDesign"}
+                    type={"password"}
+                    name={"password"}
+                    placeholder={"Aa1234@"}
+                    functionProp={functionHandler}
+                />
 
-            <CustomInput
-                design={"inputDesign"}
-                type={"email"}
-                name={"email"}
-                placeholder={"user@gmail.com"}
-                functionProp={functionHandler}
-            />
-            <CustomInput
-                design={"inputDesign"}
-                type={"password"}
-                name={"password"}
-                placeholder={"Aa1234@"}
-                functionProp={functionHandler}
-            />
+                <div className='buttonSubmit' onClick={logMe}>Log in</div>
 
-            <div className='buttonSubmit' onClick={logMe}>Log in</div>
+                {message && <p> {message}</p>}
 
-            {message && <p> {message}</p>} 
+            </div>
         </div>
     )
 }

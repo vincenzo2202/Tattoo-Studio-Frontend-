@@ -5,4 +5,40 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.buttonSubmit{
+    width: 13em;
+    height: 2em;
+    border: 0.2em solid black;
+    background-color: gray;
+    color: black;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.input-card{
+    background-color: gray;
+    margin: 2em;
+    padding: 2em;
+    border: 0.2em solid black;
+    border-radius: 1em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ 
+
+.buttonSubmit:active{
+  transform: scale(0.9);
 }
