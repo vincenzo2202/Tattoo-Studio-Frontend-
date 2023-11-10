@@ -42,3 +42,7 @@
 .buttonSubmit:active{
   transform: scale(0.9);
 }
+
+.errorMsg {
+    color: red;
+}
