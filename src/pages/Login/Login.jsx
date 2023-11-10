@@ -80,7 +80,7 @@ export const Login = () => {
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
-                <div className='errorMsg'>{credentialsError.paswordError}</div>
+                <div className='errorMsg'>{credentialsError.passwordError}</div>
 
                 <div className='buttonSubmit' onClick={logMe}>Log in</div>
 

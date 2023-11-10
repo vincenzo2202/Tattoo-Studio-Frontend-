@@ -2,59 +2,64 @@ export const validator = (type, value) => {
 
     switch (type) {
 
-        case 'email':
-        case 'correo':
-        case 'mail':
+        case `email`:
+        case `correo`:
+        case `mail`:
 
-            if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)) {
-                return "Invalid e-mail format";
+            if (!value) {
+                return `You must insert a ${type}`
+            } else if (typeof (value) !== `string`) {
+                return `Incorrect ${type}, it should only contain strings`
+            } else if (value.length > 100) {
+                return `${type} is too long, max 100 characters`
+            } else if (! /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value)) {
+                return `Invalid ${type} format`;
             } else {
-                return "";
+                return ``;
             }
 
-        case 'name':
-        case 'surname':
+        case `name`:
+        case `surname`:
+        case `full_name`:
 
-            if (value.length > 25) {
-                return "Escribe un nombre correcto"
+            if (!value) {
+                return `You must insert a ${type}`
+            } else if (typeof (value) !== `string`) {
+                return `Incorrect ${type}, it should only contain strings`
+            } else if (value.length > 50) {
+                return `${type} is too long, max 50 characters`
             } else {
-                return ""
+                return ``
             }
 
-        case 'phone':
-        case 'telefono':
+        case `phone`:
+        case `phone_number`:
+        case `telefono`:
 
-            if (! /(?=.*?[0-9])/.test(value)) {
-                return "Incorrect phone number";
+            if (!value) {
+                return `You must insert a number`
+            } else if (value.length > 12) {
+                return `Number too long, max 12 numbers`
+            } else if (! /(?=.*?[0-9])/.test(value)) {
+                return `You can insert only numbers`;
             } else {
-                return "";
+                return ``;
             }
 
-        case 'password':
-            const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{4,12}$/;
+        case `password`:
+        case `password2`:
+        case `contraseña`:
 
-
-            if (! /(?=.*?[0-9])/.test(value)) {
-                return "Incorrect phone number";
+            if (!value) {
+                return `You must insert a ${type}`
+            } else if (typeof (value) !== `string`) {
+                return `${type} is incorrect; only strings are allowed. Please try again`
+            } else if (value.length > 100) {
+                return `${type} is too long, max100 characters`
+            } else if (! /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{4,12}$/.test(value)) {
+                return `Invalid ${type} format`;
             } else {
-                return "";
+                return ``;
             }
-        case 'password2':
-        case 'contraseña':
-
-            if (value.length < 8) {
-                return "Write 8 characters at least"
-            } else {
-
-                //Checking the password format....
-
-                if (! /[\d()+-]/g.test(value)) {
-                    return "Invalid password format";
-                } else {
-                    return "";
-                }
-            }
-
-
     }
 }
