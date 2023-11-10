@@ -3,6 +3,7 @@ import "./Login.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { useNavigate } from "react-router-dom";
 import { logUser } from "../../services/apiCalls";
+import { validator } from "../../services/Validations";
 
 export const Login = () => {
 
@@ -11,6 +12,11 @@ export const Login = () => {
     const [credentials, setCredentials] = useState({
         email: "",
         password: "",
+    });
+
+    const [credentialsError, setCredentialsError] = useState({
+        emailError: "",
+        passwordError: "",
     });
 
     const [message, setMessage] = useState("");
@@ -22,20 +28,36 @@ export const Login = () => {
         }));
     };
 
-    const logMe = () => {
-        logUser(credentials)
-            .then((response) => {
-                console.log(response.data);
-                const { message } = response.data;
-                setMessage(message);
-                setTimeout(()=>{
-                    navigate("/profile");
+    const errorCheck = (e) => {
 
-                },2000)
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        let error = "";
+
+        error = validator(e.target.name, e.target.value);
+
+        setCredentialsError((prevState) => ({
+            ...prevState,
+            [e.target.name + 'Error']: error,
+        }));
+    }
+
+    const logMe = () => {
+
+        if (credentials.password != "" &&
+            credentials.email != "") {
+            logUser(credentials)
+                .then((response) => {
+                    console.log(response.data);
+                    const { message } = response.data;
+                    setMessage(message);
+                    setTimeout(() => {
+                        navigate("/profile");
+
+                    }, 2000)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     };
 
     return (
@@ -47,14 +69,18 @@ export const Login = () => {
                     name={"email"}
                     placeholder={"user@gmail.com"}
                     functionProp={functionHandler}
+                    functionBlur={errorCheck}
                 />
+                <div className='errorMsg'>{credentialsError.emailError}</div>
                 <CustomInput
                     design={"inputDesign"}
                     type={"password"}
                     name={"password"}
                     placeholder={"Aa1234@"}
                     functionProp={functionHandler}
+                    functionBlur={errorCheck}
                 />
+                <div className='errorMsg'>{credentialsError.paswordError}</div>
 
                 <div className='buttonSubmit' onClick={logMe}>Log in</div>
 

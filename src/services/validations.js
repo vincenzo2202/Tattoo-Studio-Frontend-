@@ -1,21 +1,21 @@
 export const validator = (type, value) => {
 
-    switch(type){
+    switch (type) {
 
         case 'email':
         case 'correo':
         case 'mail':
 
-            if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value) ) {
+            if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)) {
                 return "Invalid e-mail format";
             } else {
                 return "";
             }
-        
+
         case 'name':
         case 'surname':
 
-            if(value.length > 25){
+            if (value.length > 25) {
                 return "Escribe un nombre correcto"
             } else {
                 return ""
@@ -24,23 +24,31 @@ export const validator = (type, value) => {
         case 'phone':
         case 'telefono':
 
-            if (! /(?=.*?[0-9])/.test(value) ) {
+            if (! /(?=.*?[0-9])/.test(value)) {
                 return "Incorrect phone number";
             } else {
                 return "";
             }
 
         case 'password':
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{4,12}$/;
+
+
+            if (! /(?=.*?[0-9])/.test(value)) {
+                return "Incorrect phone number";
+            } else {
+                return "";
+            }
         case 'password2':
         case 'contraseña':
 
-            if(value.length < 8){
+            if (value.length < 8) {
                 return "Write 8 characters at least"
             } else {
 
                 //Checking the password format....
 
-                if (! /[\d()+-]/g.test(value) ) {
+                if (! /[\d()+-]/g.test(value)) {
                     return "Invalid password format";
                 } else {
                     return "";

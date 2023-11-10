@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Register.css"
-import { CustomInput } from "../../common/CustomInput/CustomInput"; 
-import { useNavigate } from "react-router-dom"; 
-import { validator } from "../../services/Validations"; 
+import { CustomInput } from "../../common/CustomInput/CustomInput";
+import { useNavigate } from "react-router-dom";
+import { validator } from "../../services/Validations";
 import { registerUser } from "../../services/apiCalls";
 
 export const Register = () => {
@@ -48,7 +48,8 @@ export const Register = () => {
         if (credentials.full_name != "" &&
             credentials.password != "" &&
             credentials.email != "" &&
-            credentials.phone_number != "") {
+            credentials.phone_number != ""){
+
             const credentialsWithNumber = {
                 ...credentials,
                 phone_number: parseInt(credentials.phone_number, 10)
@@ -58,9 +59,9 @@ export const Register = () => {
                     console.log(response.data);
                     const { message } = response.data;
                     setMessage(message);
-                    setTimeout(()=>{ 
+                    setTimeout(() => {
                         navigate("/login");
-                    },2000)
+                    }, 2000)
                 })
                 .catch(error => {
                     console.log(error);
