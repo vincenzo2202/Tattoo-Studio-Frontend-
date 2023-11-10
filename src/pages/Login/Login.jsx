@@ -28,7 +28,10 @@ export const Login = () => {
                 console.log(response.data);
                 const { message } = response.data;
                 setMessage(message);
-                // navigate("/profile");
+                setTimeout(()=>{
+                    navigate("/profile");
+
+                },2000)
             })
             .catch(error => {
                 console.log(error);
@@ -55,7 +58,7 @@ export const Login = () => {
 
                 <div className='buttonSubmit' onClick={logMe}>Log in</div>
 
-                {message && <p> {message}</p>}
+                <div> {message}</div>
 
             </div>
         </div>
