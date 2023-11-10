@@ -49,7 +49,6 @@ export const validator = (type, value) => {
         case `password`:
         case `password2`:
         case `contraseña`:
-
             if (!value) {
                 return `You must insert a ${type}`
             } else if (typeof (value) !== `string`) {
