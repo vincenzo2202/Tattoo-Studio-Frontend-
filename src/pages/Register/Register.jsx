@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Register.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput";
+import { registerUser } from "../../services/apiCalls";
 
 export const Register = () => {
     const [credentials, setCredentials] = useState({
-        full_name: "",
+         full_name: "",
          email: "",
          password: "",
-         phone_number: 0
+         phone_number: "" 
        });
 
     const [message, setMessage] = useState("");
@@ -20,7 +21,7 @@ export const Register = () => {
     };
 
     const SignUp = () => {
-        logUser(credentials)
+        registerUser(credentials)
             .then((response) => {
                 console.log(response.data);
                 const { message } = response.data;
@@ -39,8 +40,8 @@ export const Register = () => {
 
             <CustomInput
                 design={"inputDesign"}
-                type={"full-name"}
-                name={"full-name"}
+                type={"name"}
+                name={"full_name"}
                 placeholder={"David Ochando"}
                 functionProp={functionHandler}
             />
@@ -60,7 +61,7 @@ export const Register = () => {
             />
             <CustomInput
                 design={"inputDesign"}
-                type={"Phone"}
+                type={"number"}
                 name={"Phone"}
                 placeholder={"666666666"}
                 functionProp={functionHandler}

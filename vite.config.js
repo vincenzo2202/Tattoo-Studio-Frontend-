@@ -14,4 +14,4 @@ export default defineConfig({
       cors: "false"
     },
   },
-})
+}) 
