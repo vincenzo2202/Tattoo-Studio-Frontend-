@@ -52,7 +52,7 @@ export const Register = () => {
         if (credentials.full_name != "" &&
             credentials.password != "" &&
             credentials.email != "" &&
-            credentials.phone_number != ""   ) {
+            credentials.phone_number != "") {
 
             const credentialsWithNumber = {
                 ...credentials,
@@ -62,11 +62,13 @@ export const Register = () => {
             registerUser(credentialsWithNumber)
                 .then((response) => {
                     console.log(response.data);
-                    const { message } = response.data;
+                    const { message, success } = response.data;
                     setMessage(message);
-                    setTimeout(() => {
-                        navigate("/login");
-                    }, 2000)
+                    if (error.target.value != "") {
+                        setTimeout(() => {
+                            navigate("/login");
+                        }, 2000)
+                    }
                 })
                 .catch(error => {
                     console.log(error);

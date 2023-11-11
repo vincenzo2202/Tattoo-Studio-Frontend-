@@ -47,12 +47,13 @@ export const Login = () => {
             logUser(credentials)
                 .then((response) => {
                     console.log(response.data);
-                    const { message } = response.data;
+                    const { message, success } = response.data;
                     setMessage(message);
-                    setTimeout(() => {
-                        navigate("/profile");
-
-                    }, 2000)
+                    if (message === "user logged succesfully") {
+                        setTimeout(() => {
+                            navigate("/profile");
+                        }, 2000)
+                    }
                 })
                 .catch(error => {
                     console.log(error);
