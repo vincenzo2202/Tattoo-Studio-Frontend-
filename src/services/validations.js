@@ -60,5 +60,16 @@ export const validator = (type, value) => {
             } else {
                 return ``;
             }
+
+
+        case `photo`:
+
+            if (typeof (value) !== `string`) {
+                return `Incorrect ${type}, it should only contain strings`
+            } else if (value.length > 500) {
+                return `${type} is too long, max 500 characters`
+            } else { 
+                return ``
+            }
     }
 }

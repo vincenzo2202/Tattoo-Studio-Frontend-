@@ -13,14 +13,16 @@ export const Register = () => {
         full_name: "",
         email: "",
         password: "",
-        phone_number: ""
+        phone_number: "",
+        photo: ""
     });
 
     const [credentialsError, setCredentialsError] = useState({
         full_nameError: "",
         emailError: "",
         passwordError: "",
-        phone_numberError: ""
+        phone_numberError: "",
+        photoError: ""
     });
 
     const [message, setMessage] = useState("");
@@ -44,15 +46,18 @@ export const Register = () => {
         }));
     }
 
+    const photoInputDefault = (photo) => (photo === "" ? undefined : photo);
+
     const SignUp = () => {
         if (credentials.full_name != "" &&
             credentials.password != "" &&
             credentials.email != "" &&
-            credentials.phone_number != ""){
+            credentials.phone_number != ""   ) {
 
             const credentialsWithNumber = {
                 ...credentials,
-                phone_number: parseInt(credentials.phone_number, 10)
+                phone_number: parseInt(credentials.phone_number, 10),
+                photo: photoInputDefault(credentials.photo)
             };
             registerUser(credentialsWithNumber)
                 .then((response) => {
@@ -110,8 +115,17 @@ export const Register = () => {
                     functionBlur={errorCheck}
                 />
                 <div className='errorMsg'>{credentialsError.phone_numberError}</div>
+                <CustomInput
+                    design={"inputDesign"}
+                    type={"text"}
+                    name={"photo"}
+                    placeholder={"URL photo"}
+                    functionProp={functionHandler}
+                    functionBlur={errorCheck}
+                />
+                <div className='errorMsg'>{credentialsError.photoError}</div>
 
-                <div className='buttonSubmit' onClick={SignUp}>Sign up</div>
+                <div className='animated-button' onClick={SignUp}>Sign up</div>
 
                 <p>{message}</p>
             </div>
