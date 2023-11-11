@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css"
 import { getProfile } from "../../services/apiCalls";
+import { LinkButton } from "../../common/LinkButton/LinkButton";
 
 export const Profile = () => {
     const [user, setUser] = useState({
@@ -21,12 +22,10 @@ export const Profile = () => {
             })
             .catch((error) => {
                 console.log(error);
-
             });
 
     }, []);
 
- 
     return (
         <div className="profile-body">
             {
@@ -34,12 +33,24 @@ export const Profile = () => {
                     ? (
                         <div className="div-photo">
                             <img src={user.photo} alt="User" />
-                            <h1>Welcome, {user.full_name}!</h1>
+                            <h1>Hola, {user.full_name}!</h1>
+                            <div>Name: {user.full_name}</div>
+                            <div>Email: {user.email}</div>
+                            <div>Phone: {user.phone_number}</div>
+                            <div className="update-profile">
+                                <LinkButton
+                                    className={"class-button"}
+                                    path={"/UpdateProfile"}
+                                    title={"Update"}
+                                />
+                            </div>
                         </div>
                     ) : (
                         <div>Loading...</div>
                     )}
+
+
         </div>
     );
- 
+
 };

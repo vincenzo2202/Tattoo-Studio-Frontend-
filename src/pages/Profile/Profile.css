@@ -1,14 +1,34 @@
-.profile-body{
+.profile-body {
     height: 84vh;
     width: 100vw;
     background-color: aqua;
 
     display: flex;
     justify-content: center;
+    align-items: center;
     color: black;
     padding: 4em;
 }
 
-.div-photo img{
+.div-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div-photo img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 14em;
+}
+
+.class-button {
+    width: 5em;
+    height: 2em;
+    background-color: rgb(7, 34, 166);
+    border: 0.2em solid black;
+    border-radius: 0.7em;
+    color: rgb(255, 255, 255);
 }
