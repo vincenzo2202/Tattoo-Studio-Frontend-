@@ -5,4 +5,10 @@
 
     display: flex;
     justify-content: center;
+    color: black;
+    padding: 4em;
+}
+
+.div-photo img{
+    width: 14em;
 }

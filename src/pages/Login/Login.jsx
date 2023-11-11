@@ -47,10 +47,11 @@ export const Login = () => {
             logUser(credentials)
                 .then((response) => {
                     console.log(response.data);
-                    const { message, success } = response.data;
+                    const { message } = response.data;
                     setMessage(message);
                     if (message === "user logged succesfully") {
                         setTimeout(() => {
+                            localStorage.setItem("token", response.data.token)
                             navigate("/profile");
                         }, 2000)
                     }

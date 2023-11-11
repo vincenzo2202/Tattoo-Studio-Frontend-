@@ -10,3 +10,11 @@ export const registerUser = async (body) => {
 export const getWorkers = async () => {
     return await axios.get(`http://localhost:4000/user/AllWorkers?skip=6&page=1`);
 }
+
+export const getProfile = async (token) => {
+    return await axios.get('http://localhost:4000/user/profile', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })}
+
