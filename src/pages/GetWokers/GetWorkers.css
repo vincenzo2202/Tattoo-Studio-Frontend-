@@ -1,8 +1,15 @@
 .workers-body{
     height: 84vh;
     width: 100vw;
-    background-color: aqua;
+    background-color: rgb(0, 238, 255);
 
     display: flex;
+    justify-content: center; 
+}
+
+
+.worker-Roster{
+    display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
