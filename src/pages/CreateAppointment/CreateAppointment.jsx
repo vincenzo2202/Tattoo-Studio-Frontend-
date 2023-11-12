@@ -3,7 +3,8 @@ import "./CreateAppointment.css"
 import { useNavigate } from "react-router-dom";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validator } from "../../services/Validations";
-import { createAppointment } from "../../services/apiCalls";
+import { createAppointment } from "../../services/apiCalls"; 
+import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
 export const CreateAppointment = () => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const CreateAppointment = () => {
         idError: ""
 
     });
-   
+
     const [message, setMessage] = useState("");
 
     const functionHandler = (e) => {
@@ -43,7 +44,6 @@ export const CreateAppointment = () => {
             [e.target.name + 'Error']: error,
         }));
     }
- 
 
     const Create = () => {
         if (appointment.date != "" &&
@@ -53,16 +53,16 @@ export const CreateAppointment = () => {
 
             const appointmentWithNumber = {
                 ...appointment,
-                id: parseInt(appointment.id, 20), 
+                id: parseInt(appointment.id, 20),
             };
 
             const token = localStorage.getItem("token");
             createAppointment(appointmentWithNumber, token)
                 .then((response) => {
                     console.log(response.data);
-                    const { message } = response.data;
+                    const { message, error } = response.data;
                     setMessage(message);
-                    if (error.target.value != "") {
+                    if (error != "") {
                         setTimeout(() => {
                             navigate("/appointments");
                         }, 2000)
@@ -78,7 +78,7 @@ export const CreateAppointment = () => {
         <div className="appointment-body">
 
             <div className="input-card">
- 
+
 
                 <CustomInput
                     design={"inputDesign"}
@@ -89,15 +89,16 @@ export const CreateAppointment = () => {
                     functionBlur={errorCheck}
                 />
                 <div className='errorMsg'>{appointmentError.dateError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"text"}
-                    name={"shift"}
-                    placeholder={"morning/afternoon"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
+
+                <ShiftToggle
+                design={"inputDesign"}
+                    selectedShift={appointment.shift}
+                    onShiftChange={(value) =>
+                        setAppointment((prevState) => ({ ...prevState, shift: value }))
+                    }
+                     
                 />
-                <div className='errorMsg'>{appointmentError.shiftError}</div>
+                <div className='errorMsg'>{appointmentError.dateError}</div>
                 <CustomInput
                     design={"inputDesign"}
                     type={"email"}
@@ -107,7 +108,7 @@ export const CreateAppointment = () => {
                     functionBlur={errorCheck}
                 />
                 <div className='errorMsg'>{appointmentError.emailError}</div>
-                 
+
                 <CustomInput
                     design={"inputDesign"}
                     type={"number"}

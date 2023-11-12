@@ -7,7 +7,12 @@ import { LinkButton } from "../../common/LinkButton/LinkButton";
 export const Appointments = () => {
     const [appointment, setAppointments] = useState([]);
 
+ 
+
     useEffect(() => {
+
+       
+
         const token = localStorage.getItem("token");
         if (token) {
             appointmentsUser(token)
@@ -17,6 +22,8 @@ export const Appointments = () => {
                 })
                 .catch(error => console.log(error))
         }
+
+
     }, []);
 
 
@@ -27,33 +34,32 @@ export const Appointments = () => {
             {
                 appointment
                     ? (<div className='appointments-Roster'>
-                        <div>
-                            <div className='create-appointment-button'>
-                                <LinkButton
-                                    className={"create-appointment-button"}
-                                    path={"/createAppointment"}
-                                    title={"Create"}
-                                />
-                            </div>
-                            {
-                                appointment.map(appointment => {
-                                    return (
-                                        <CardsAppointments
-                                            appointmentId={appointment.id}
-                                            nameProduct={appointment.name}
-                                            imageProduct={appointment.image}
-                                            categoryProduct={appointment.category}
-                                            emailWorker={appointment.email}
-                                            nameWorker={appointment.full_name}
-                                            date={appointment.date}
-                                            shift={appointment.shift}
-                                            price={appointment.price}
-                                        />
-                                    )
-                                })
-                            }
 
+                        <div className='create-appointment-button'>
+                            <LinkButton
+                                path={"/createAppointment"}
+                                title={"Create"}
+                            />
                         </div>
+                        {
+                            appointment.map(appointment => {
+                                return (
+                                    <CardsAppointments
+                                        appointmentId={appointment.id}
+                                        nameProduct={appointment.name}
+                                        imageProduct={appointment.image}
+                                        categoryProduct={appointment.category}
+                                        emailWorker={appointment.email}
+                                        nameWorker={appointment.full_name}
+                                        date={appointment.date}
+                                        shift={appointment.shift}
+                                        price={appointment.price}
+                                    />
+                                )
+                            })
+                        }
+
+
                     </div>
                     )
                     : (

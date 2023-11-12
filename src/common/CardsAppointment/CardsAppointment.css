@@ -1,39 +1,93 @@
-
-.card-body{
-
-    height: 10em;
-    width: 100%;
-
-    border-radius: 1em;
-
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    flex-direction: row;
-    
-
-    background-color: darkcyan;
-    border: 0.2 solid black;
-
-    transition: 1s; 
-    margin: 1em;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2em;
-}
-
-.card-body:hover {
-
-    transform: scale(1.2);
+  
+  
+  .card-appointment:hover {
+    transform: scale(1.1);
     transition: 1s;
-}
+  }
+  
+  .photo { 
+    width: 10em;
+  }
+  
+  .card-appointment  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1em 0em 1em 0em;
+    border-radius: 0.5em;
+    background-color: rgb(161, 172, 219);
+    margin: 3em;
+    transition: 1s;
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+  
+  .card-appointment-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition-duration: 2s;
+  }
+  
+  .card-appointment img {
+    border-radius: 10%;
+    width: 80%;
+    margin-top: 1.25em;
+  }
+  
+  .date-category {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 6em;
+  }
+  
+  .date,
+  .shift,
+  .service {
+    margin-right: 3em;
+  }
+  
+  .button-spoiler {
+    width: 10em;
+  }
+  
+  .tattoo-artist-card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.selectedCard {
-    transform: scale(1.15);
-    background-color: red;
-}
+  
+/* .linkButtonDesign{
+    width: 5em;
+    height: 2em;
+    background-color: bisque;
+    border: 0.2em solid black;
+    border-radius: 0.7em;
+    color: black; 
+    cursor: pointer; 
+} */
 
-.photo {
-
-    height: 8em;
-    width: 8em;
-}
+.button-update-appointment{ 
+    cursor:pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 3em;
+    width: 3em;
+    margin-bottom: 2em;
+  }
+  
+  .button-update-appointment img{ 
+    cursor:pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 3em;
+    width: 3em;
+  }

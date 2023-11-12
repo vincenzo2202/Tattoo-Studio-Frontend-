@@ -1,0 +1,16 @@
+ .shift-toggle{ 
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; 
+ }
+
+ .shift-toggle-select{
+    width: 15em;
+    height: 2.3em;
+   
+    border-radius: 0.8em;
+    text-align: center;
+ }
