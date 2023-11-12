@@ -10,8 +10,7 @@ export const Appointments = () => {
  
 
     useEffect(() => {
-
-       
+ 
 
         const token = localStorage.getItem("token");
         if (token) {
@@ -26,8 +25,9 @@ export const Appointments = () => {
 
     }, []);
 
-
-    console.log(appointment);
+    const localStorageId = (argumento) => {
+        localStorage.setItem("appointmentId", argumento)
+    }
 
     return (
         <div className="appointments-body">
@@ -54,6 +54,7 @@ export const Appointments = () => {
                                         date={appointment.date}
                                         shift={appointment.shift}
                                         price={appointment.price}
+                                        emit={()=>localStorageId(appointment.id)}
                                     />
                                 )
                             })

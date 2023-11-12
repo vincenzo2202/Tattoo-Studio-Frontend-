@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./CardsAppointment.css"
 import { LinkButton } from "../LinkButton/LinkButton";
 
-export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, emailWorker, nameWorker, appointmentId, date, shift, price }) => {
+export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, emailWorker, nameWorker, appointmentId, date, shift, price, emit }) => {
 
     const [collapsed, setCollapsed] = useState(true);
 
@@ -38,6 +38,7 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                         classButton={"button-update-appointment"}
                         path={"/updateAppointment"}
                         title={<div className="button-update-appointment" > <img src="https://cdn.icon-icons.com/icons2/1558/PNG/512/353430-checkbox-edit-pen-pencil_107516.png" alt="" /></div>  }
+                        emit={()=>emit()}
                     />
                     
                     
