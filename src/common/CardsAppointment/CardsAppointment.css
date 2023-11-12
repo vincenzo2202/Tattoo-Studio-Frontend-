@@ -1,22 +1,21 @@
 
 .card-body{
 
-    height: 20em;
-    width: 15em;
+    height: 10em;
+    width: 100%;
 
     border-radius: 1em;
 
     display: flex;
     justify-content:center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     
 
     background-color: darkcyan;
     border: 0.2 solid black;
 
-    transition: 1s;
-
+    transition: 1s; 
     margin: 1em;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.2em;

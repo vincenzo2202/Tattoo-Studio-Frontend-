@@ -6,7 +6,8 @@ import { Profile } from '../Profile/Profile';
 import { GetPortfolio } from '../GetPortfolio/GetPortfolio';
 import { GetWorkers } from '../GetWokers/GetWorkers';
 import { UpdateProfile } from '../UpdateProfile/UpdateProfile';
-import { Appointments } from '../Appointments/Appointments';
+import { Appointments } from '../Appointments/Appointments';  
+import { CreateAppointment } from '../CreateAppointment/CreateAppointment';
 
 export const Body = () => {
      return (
@@ -20,6 +21,7 @@ export const Body = () => {
                 <Route path="/workers" element={<GetWorkers />}/>
                 <Route path="/updateProfile" element={<UpdateProfile />}/>
                 <Route path="/appointments" element={<Appointments />}/>
+                <Route path="/createAppointment" element={<CreateAppointment />}/>
             </Routes>
          </>
      )
