@@ -1,8 +1,14 @@
-.udateAppointment-body{
+.appointment-body{
     height: 84vh;
     width: 100vw;
     background-color: aqua;
 
     display: flex;
     justify-content: center;
+}
+
+.input-card{
+    display: flex;
+    justify-content: center;
+align-items: center;
 }

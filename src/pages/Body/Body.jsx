@@ -23,7 +23,7 @@ export const Body = () => {
                 <Route path="/updateProfile" element={<UpdateProfile />}/>
                 <Route path="/appointments" element={<Appointments />}/>
                 <Route path="/createAppointment" element={<CreateAppointment />}/>
-                <Route path="/udateAppointment" element={<UpdateAppointment />}/>
+                <Route path="/updateAppointment" element={<UpdateAppointment />}/>
             </Routes>
          </>
      )

@@ -45,3 +45,12 @@ export const createAppointment = ( body, token) => {
   });
   
 };
+
+export const updateAppointment = ( body, token) => {
+  return axios.put('http://localhost:4000/appointment/updateAppointment', body,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  
+};
