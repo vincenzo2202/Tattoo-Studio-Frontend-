@@ -7,3 +7,14 @@
     width: 100vw; 
     background-color: rgb(217, 150, 125);
 }
+
+.appointment-button{
+    width: 6.5em;
+    height: 2em;
+    background-color: bisque;
+    border: 0.2em solid black;
+    border-radius: 0.7em;
+    color: black; 
+}
+
+ 
