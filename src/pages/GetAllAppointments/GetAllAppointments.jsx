@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./Appointments.css"
-import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
-import { appointmentsUsers } from "../../services/apiCalls";
+import "./GetAllAppointments.css"
+import { getAllAppointment } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
+import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
 
-export const Appointments = () => {
+export const GetAllAppointments = () => {
     const [appointment, setAppointments] = useState([]);
 
 
@@ -13,8 +13,8 @@ export const Appointments = () => {
 
 
         const token = localStorage.getItem("token");
-        if (token && appointment.length === 0) {
-            appointmentsUsers(token)
+        if (token) {
+            getAllAppointment(token)
                 .then(response => {
                     console.log(appointment);
                     setAppointments(response.data.data)
@@ -25,11 +25,9 @@ export const Appointments = () => {
 
     }, []);
 
-
     const localStorageId = (argumento) => {
         localStorage.setItem("appointmentId", argumento)
     }
-    console.log(appointment);
 
     return (
         <div className="appointments-body">
@@ -43,20 +41,29 @@ export const Appointments = () => {
                                 title={"Create"}
                             />
                         </div>
-
                         {
                             appointment.map(appointment => {
+
+                                if (appointment.status) {
+                                    appointment.status = "pending"
+                                } else if (!appointment.status) {
+                                    appointment.status = "done"
+                                }
+
                                 return (
                                     <CardsAppointments
                                         appointmentId={appointment.id}
                                         nameProduct={appointment.name}
                                         imageProduct={appointment.image}
                                         categoryProduct={appointment.category}
-                                        emailWorker={appointment.email}
-                                        nameWorker={appointment.full_name}
+                                        emailWorker={appointment.worker_email}
+                                        nameWorker={appointment.worker_name}
                                         date={appointment.date}
                                         shift={appointment.shift}
                                         price={appointment.price}
+                                        client_email={appointment.user_email}
+                                        client_name={appointment.user_name}
+                                        status={appointment.status}
                                         emit={() => localStorageId(appointment.id)}
                                     />
                                 )
@@ -67,7 +74,7 @@ export const Appointments = () => {
                     </div>
                     )
                     : (
-                        <div>Loading...</div>
+                        <div>Loading</div>
                     )
             }
         </div>

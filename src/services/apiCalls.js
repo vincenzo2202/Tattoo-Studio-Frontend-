@@ -66,3 +66,11 @@ export const getAllUsers = (token) => {
   });
   
 };
+export const getAllAppointment = (token) => {
+  return axios.get('http://localhost:4000/appointment/AllAppointmentsSuper?skip=5&page=1', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  
+};
