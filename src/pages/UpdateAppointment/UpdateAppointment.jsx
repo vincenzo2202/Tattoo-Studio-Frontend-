@@ -65,11 +65,13 @@ export const UpdateAppointment = () => {
 
             const appointmentWithNumber = {
                 ...appointment,
-                id: parseInt(appointment.id, 20),
-                portfolioId: parseInt(appointment.portfolioId, 20)
+                id: parseInt(appointment.id, 10),
+                portfolioId: parseInt(appointment.portfolioId, 10)
             };
 
             const token = localStorage.getItem("token");
+
+            console.log(appointmentWithNumber);
  
             updateAppointment(appointmentWithNumber, token)
                 .then((response) => {
