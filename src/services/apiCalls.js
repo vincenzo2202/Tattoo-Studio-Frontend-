@@ -54,3 +54,14 @@ export const updateAppointment = ( body, token) => {
   });
   
 };
+
+ 
+
+export const getAllUsers = (token) => {
+  return axios.get('http://localhost:4000/user/all?skip=10&page=1', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  
+};

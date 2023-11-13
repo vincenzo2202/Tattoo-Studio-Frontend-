@@ -53,7 +53,7 @@ export const CreateAppointment = () => {
 
             const appointmentWithNumber = {
                 ...appointment,
-                id: parseInt(appointment.id, 20),
+                id: parseInt(appointment.id, 10),
             };
 
             const token = localStorage.getItem("token");
