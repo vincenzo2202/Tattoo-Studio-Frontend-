@@ -27,8 +27,9 @@ export const updateUser = (body, token) => {
   });
 };
 
+ 
 
-export const appointmentsUser = (token) => {
+export const appointmentsUsers = (token) => {
   return axios.get('http://localhost:4000/appointment/getAllAppointment?skip=10&page=1', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -58,7 +59,7 @@ export const updateAppointment = ( body, token) => {
  
 
 export const getAllUsers = (token) => {
-  return axios.get('http://localhost:4000/user/all?skip=10&page=1', {
+  return axios.get('http://localhost:4000/user/all?skip=20&page=1', {
     headers: {
       Authorization: `Bearer ${token}`,
     },

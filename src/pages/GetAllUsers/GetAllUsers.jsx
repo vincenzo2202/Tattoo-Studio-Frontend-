@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./GetAllUsers.css"
-import { CardUser } from "../../common/CardUser/CardUser"; 
+import { CardUser } from "../../common/CardUser/CardUser";
 import { getAllUsers } from "../../services/apiCalls";
 
 
-export const GetAllUsers = ()=>{
+export const GetAllUsers = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -27,6 +27,20 @@ export const GetAllUsers = ()=>{
                     ? (<div className='users-Roster'>
                         {
                             users.map(users => {
+                                if (users.is_active == true) {
+                                    users.is_active = "Active"
+                                } else if (users.is_active == false) {
+                                    users.is_active = "Not Active"
+                                }
+
+                                if (users.role_id == 1) {
+                                    users.role_id = "usuario"
+                                } else if (users.role_id == 2) {
+                                    users.role_id = "Tatuador"
+                                } else if (users.role_id == 3){
+                                    users.role_id = "Super Admin"
+                                }
+
                                 return (
                                     <CardUser
                                         key={users.id}
@@ -34,6 +48,10 @@ export const GetAllUsers = ()=>{
                                         full_name={users.full_name}
                                         phone_number={users.phone_number}
                                         email={users.email}
+                                        role_id={users.role_id}
+                                        is_active={users.is_active}
+
+
                                     />
                                 )
                             }

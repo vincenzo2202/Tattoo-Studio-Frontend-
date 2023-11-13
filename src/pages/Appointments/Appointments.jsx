@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Appointments.css"
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
-import { appointmentsUser } from "../../services/apiCalls";
+import {   appointmentsUsers } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 
 export const Appointments = () => {
@@ -14,7 +14,7 @@ export const Appointments = () => {
 
         const token = localStorage.getItem("token");
         if (token) {
-            appointmentsUser(token)
+            appointmentsUsers(token)
                 .then(response => {
                     console.log(appointment);
                     setAppointments(response.data.data)
