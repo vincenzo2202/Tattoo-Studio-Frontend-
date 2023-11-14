@@ -2,20 +2,27 @@ import React, { useState, useEffect } from "react";
 import "./GetAllUsers.css"
 import { CardUser } from "../../common/CardUser/CardUser";
 import { getAllUsers } from "../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
 
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const GetAllUsers = () => {
+    const navigate = useNavigate();
+    const rdxToken = useSelector(selectToken);
+    
     const [users, setUsers] = useState([])
+    useEffect(() => { 
 
-    useEffect(() => {
-        if (users.length === 0) {
-            const token = localStorage.getItem("token");
-            getAllUsers(token)
-                .then(user => {
-                    // console.log(worker.data);
+        if (rdxToken && users.length === 0) { 
+            getAllUsers(rdxToken)
+                .then(user => { 
                     setUsers(user.data.data)
                 })
                 .catch(error => console.log(error))
+        }else if (!rdxToken) {
+            navigate("/login");
         }
     }, [users])
     console.log(users);
@@ -37,7 +44,7 @@ export const GetAllUsers = () => {
                                     users.role_id = "usuario"
                                 } else if (users.role_id == 2) {
                                     users.role_id = "Tatuador"
-                                } else if (users.role_id == 3){
+                                } else if (users.role_id == 3) {
                                     users.role_id = "Super Admin"
                                 }
 

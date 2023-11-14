@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Profile.css"
 import { getProfile } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
+import { useNavigate } from "react-router-dom";
 
 //Rdx
 import { useSelector } from "react-redux";
@@ -10,6 +11,7 @@ import { selectToken } from "../userSlice";
 
 export const Profile = () => {
 
+    const navigate = useNavigate(); 
     const rdxToken = useSelector(selectToken);
 
     const [user, setUser] = useState({
@@ -19,11 +21,7 @@ export const Profile = () => {
         photo: ""
     });
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        console.log(token);
-
-        rdxToken
+    useEffect(() => {    
         if (rdxToken) {
             getProfile(rdxToken)
                 .then((response) => {
@@ -33,7 +31,7 @@ export const Profile = () => {
                 .catch((error) => {
                     console.log(error);
                 });
-        } else {
+        } else if (!rdxToken) {
             navigate("/login");
         }
     }, []);

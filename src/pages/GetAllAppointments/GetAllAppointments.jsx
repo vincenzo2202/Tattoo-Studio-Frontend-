@@ -3,26 +3,32 @@ import "./GetAllAppointments.css"
 import { getAllAppointment } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
+import { useNavigate } from "react-router-dom";
+
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const GetAllAppointments = () => {
+
+
+    const navigate = useNavigate();
+    const rdxToken = useSelector(selectToken);
+
     const [appointment, setAppointments] = useState([]);
 
-
-
-    useEffect(() => {
-
-
-        const token = localStorage.getItem("token");
-        if (token) {
-            getAllAppointment(token)
-                .then(response => {
-                    console.log(appointment);
-                    setAppointments(response.data.data)
-                })
-                .catch(error => console.log(error))
-        }
-
-
+    useEffect(() => { 
+           
+            if (rdxToken) {
+                getAllAppointment(rdxToken)
+                    .then(response => {
+                        console.log(appointment);
+                        setAppointments(response.data.data)
+                    })
+                    .catch(error => console.log(error))
+            } else {
+                navigate("/login");
+            }  
     }, []);
 
     const localStorageId = (argumento) => {

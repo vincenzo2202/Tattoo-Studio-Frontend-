@@ -6,8 +6,15 @@ import { validator } from "../../services/Validations";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+
+
 export const UpdateAppointment = () => {
-    const navigate = useNavigate();
+
+    const navigate = useNavigate(); 
+    const rdxToken = useSelector(selectToken);
 
     const [appointment, setAppointment] = useState({
         id: "",
@@ -26,12 +33,14 @@ export const UpdateAppointment = () => {
 
     });
 
-
     useEffect(() => {
-        if (appointment.id === "") {
+        if (rdxToken && appointment.id === "") {
             const id = localStorage.getItem("appointmentId")
             setAppointment((prevState) => ({ ...prevState, id: id }));
+        }else if (!rdxToken) {
+            navigate("/login");
         }
+
     }, [appointment])
 
 

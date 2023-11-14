@@ -3,33 +3,36 @@ import "./Appointments.css"
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
 import { appointmentsUsers } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
+import {useNavigate } from "react-router-dom";
+
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
 
 export const Appointments = () => {
-    const [appointment, setAppointments] = useState([]);
+    const navigate = useNavigate(); 
+    const rdxToken = useSelector(selectToken);
 
 
+    const [appointment, setAppointments] = useState([]); 
 
-    useEffect(() => {
+    useEffect(() => { 
 
-
-        const token = localStorage.getItem("token");
-        if (token && appointment.length === 0) {
-            appointmentsUsers(token)
-                .then(response => {
-                    console.log(appointment);
+        if (rdxToken) {
+            appointmentsUsers(rdxToken)
+                .then(response => { 
                     setAppointments(response.data.data)
                 })
                 .catch(error => console.log(error))
-        }
+        } else if (!rdxToken) {
+            navigate("/login");
+        } 
 
-
-    }, []);
-
+    }, []); 
 
     const localStorageId = (argumento) => {
         localStorage.setItem("appointmentId", argumento)
-    }
-    console.log(appointment);
+    } 
 
     return (
         <div className="appointments-body">

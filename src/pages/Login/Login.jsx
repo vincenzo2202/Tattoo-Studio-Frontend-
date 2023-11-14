@@ -11,11 +11,16 @@ import { validator } from "../../services/Validations";
 import { useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
 import { login } from "../userSlice";
 
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+
 
 export const Login = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const rdxToken = useSelector(selectToken);
 
     const [credentials, setCredentials] = useState({
         email: "",
@@ -26,6 +31,12 @@ export const Login = () => {
         emailError: "",
         passwordError: "",
     });
+
+    useEffect(() => {
+        if (rdxToken) {
+            navigate("/");
+        }
+    }, []);
 
     const [message, setMessage] = useState("");
 

@@ -5,9 +5,15 @@ import { validator } from "../../services/Validations";
 import { updateUser } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+
 export const UpdateProfile = () => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
+    const rdxToken = useSelector(selectToken);
+
 
     const [credentials, setCredentials] = useState({
         full_name: "",
@@ -22,6 +28,12 @@ export const UpdateProfile = () => {
         phone_numberError: "",
         photoError: ""
     });
+
+    useEffect(() => {
+        if (!rdxToken) {
+            navigate("/login");
+        }
+    }, []);
 
     const [message, setMessage] = useState("");
 
