@@ -3,7 +3,15 @@ import "./Profile.css"
 import { getProfile } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 
+//Rdx
+import { useSelector } from "react-redux";
+import { selectToken } from "../userSlice";
+
+
 export const Profile = () => {
+
+    const rdxToken = useSelector(selectToken);
+
     const [user, setUser] = useState({
         full_name: "",
         email: "",
@@ -15,15 +23,19 @@ export const Profile = () => {
         const token = localStorage.getItem("token");
         console.log(token);
 
-        getProfile(token)
-            .then((response) => {
-                console.log(response.data);
-                setUser(response.data.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
+        rdxToken
+        if (rdxToken) {
+            getProfile(rdxToken)
+                .then((response) => {
+                    console.log(response.data);
+                    setUser(response.data.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            navigate("/login");
+        }
     }, []);
 
     return (
