@@ -34,14 +34,14 @@ export const UpdateAppointment = () => {
     });
 
     useEffect(() => {
-        if (rdxToken && appointment.id === "") {
-            const id = localStorage.getItem("appointmentId")
+        if (rdxToken  ) { 
+            const id = localStorage.getItem("appointmentId")// se puede pasar por redux
             setAppointment((prevState) => ({ ...prevState, id: id }));
         }else  {
             navigate("/login");
         }
 
-    }, [appointment])
+    }, [])
 
 
     const [message, setMessage] = useState("");
@@ -83,7 +83,8 @@ export const UpdateAppointment = () => {
                 .then((response) => { 
                     const { message, error } = response.data;
                     setMessage(message);
-                    if (error != "") {
+                    console.log(message);
+                    if (message == "appointment created succesfully") {// modifique esto para que solo salga si se cambia la cita
                         setTimeout(() => {
                             navigate("/appointments");
                         }, 2000)

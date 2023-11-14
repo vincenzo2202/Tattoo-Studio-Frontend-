@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import "./CreateAppointment.css"
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validator } from "../../services/Validations";
 import { createAppointment } from "../../services/apiCalls";
@@ -12,8 +12,8 @@ import { selectToken } from "../userSlice";
 
 
 export const CreateAppointment = () => {
-    
-    const navigate = useNavigate(); 
+
+    const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
 
     const [appointment, setAppointment] = useState({
@@ -69,9 +69,7 @@ export const CreateAppointment = () => {
                 id: parseInt(appointment.id, 10),
             };
 
-
-
-
+            console.log(rdxToken);
             createAppointment(appointmentWithNumber, rdxToken)
                 .then((response) => {
                     console.log(response.data);
@@ -87,58 +85,57 @@ export const CreateAppointment = () => {
                     console.log(error);
                 });
 
-        };
-
-        return (
-            <div className="appointment-body">
-
-                <div className="input-card">
-
-
-                    <CustomInput
-                        design={"inputDesign"}
-                        type={"date"}
-                        name={"date"}
-                        placeholder={"YYYY-MM-DD"}
-                        functionProp={functionHandler}
-                        functionBlur={errorCheck}
-                    />
-                    <div className='errorMsg'>{appointmentError.dateError}</div>
-
-                    <ShiftToggle
-                        design={"inputDesign"}
-                        selectedShift={appointment.shift}
-                        onShiftChange={(value) =>
-                            setAppointment((prevState) => ({ ...prevState, shift: value }))
-                        }
-
-                    />
-                    <div className='errorMsg'>{appointmentError.dateError}</div>
-                    <CustomInput
-                        design={"inputDesign"}
-                        type={"email"}
-                        name={"email"}
-                        placeholder={"user@gmail.com"}
-                        functionProp={functionHandler}
-                        functionBlur={errorCheck}
-                    />
-                    <div className='errorMsg'>{appointmentError.emailError}</div>
-
-                    <CustomInput
-                        design={"inputDesign"}
-                        type={"number"}
-                        name={"id"}
-                        placeholder={"55"}
-                        functionProp={functionHandler}
-                        functionBlur={errorCheck}
-                    />
-                    <div className='errorMsg'>{appointmentError.idError}</div>
-
-                    <div className='animated-button' onClick={Create}>Create</div>
-
-                    <p>{message}</p>
-                </div>
-            </div>
-        )
+        }
     }
+    return (
+        <div className="appointment-body">
+
+            <div className="input-card">
+
+
+                <CustomInput
+                    design={"inputDesign"}
+                    type={"date"}
+                    name={"date"}
+                    placeholder={"YYYY-MM-DD"}
+                    functionProp={functionHandler}
+                    functionBlur={errorCheck}
+                />
+                <div className='errorMsg'>{appointmentError.dateError}</div>
+
+                <ShiftToggle
+                    design={"inputDesign"}
+                    selectedShift={appointment.shift}
+                    onShiftChange={(value) =>
+                        setAppointment((prevState) => ({ ...prevState, shift: value }))
+                    }
+
+                />
+                <div className='errorMsg'>{appointmentError.dateError}</div>
+                <CustomInput
+                    design={"inputDesign"}
+                    type={"email"}
+                    name={"email"}
+                    placeholder={"user@gmail.com"}
+                    functionProp={functionHandler}
+                    functionBlur={errorCheck}
+                />
+                <div className='errorMsg'>{appointmentError.emailError}</div>
+
+                <CustomInput
+                    design={"inputDesign"}
+                    type={"number"}
+                    name={"id"}
+                    placeholder={"55"}
+                    functionProp={functionHandler}
+                    functionBlur={errorCheck}
+                />
+                <div className='errorMsg'>{appointmentError.idError}</div>
+
+                <div className='animated-button' onClick={Create}>Create</div>
+
+                <p>{message}</p>
+            </div>
+        </div>
+    )
 }

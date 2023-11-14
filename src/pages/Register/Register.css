@@ -1,7 +1,7 @@
 .register-body{
     height: 84vh;
     width: 100vw;
-    background-color: aqua;
+    background-color:  rgb(63, 95, 95);
 
     display: flex;
     justify-content: center;

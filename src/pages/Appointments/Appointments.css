@@ -1,7 +1,7 @@
 .appointments-body{
     height: 84vh;
     width: 100vw;
-    background-color: rgb(0, 238, 255);
+    background-color: rgb(63, 95, 95);
 
     display: flex;
     justify-content: center; 

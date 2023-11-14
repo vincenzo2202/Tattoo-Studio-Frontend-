@@ -2,9 +2,7 @@ import React from "react";
 import "./CardUser.css"
 
 export const CardUser = ({full_name,photo,phone_number,email,key,is_active,role_id}) => {
-
-
-
+ 
     return (
         <div className="card-body" key={key}>
             <img className="photo" src={photo} alt={photo} />
