@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { jwtDecode } from 'jwt-decode';
 import './Header.css'
 import { LinkButton } from '../LinkButton/LinkButton'
 import { Navigate } from 'react-router-dom';
@@ -11,6 +12,19 @@ export const Header = () => {
 
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
+    const [decodedToken, setDecodedToken] = useState(null);
+
+
+    useEffect(() => {
+        try {
+            const decoded = jwtDecode(rdxToken);
+            setDecodedToken(decoded);
+        } catch (error) {
+            console.error("Error decoding token:", error);
+        }
+
+    }, [rdxToken]);
+
 
 
     const logOutMe = () => {
@@ -42,7 +56,6 @@ export const Header = () => {
                 rdxToken
                     ? (
                         <>
-
                             <LinkButton
                                 className={"linkButtonDesign"}
                                 path={"/profile"}
@@ -62,6 +75,23 @@ export const Header = () => {
                                     title={"log out"}
                                 />
                             </div>
+ 
+                            {decodedToken && decodedToken.role === "super_admin" &&
+                                (
+                                    <>
+                                        <LinkButton
+                                            className={"linkButtonDesign"}
+                                            path={"/getAllUsers"}
+                                            title={"All Users"}
+                                        />
+                                        <LinkButton
+                                            className={"linkButtonDesign"}
+                                            path={"/getAllAppointments"}
+                                            title={"GetAllAppointments"}
+                                        />
+                                    </>
+                                )}
+
                         </>
                     ) :
                     (
@@ -79,24 +109,6 @@ export const Header = () => {
 
                         </>
                     )
-            }
-            {
-                rdxToken
-                    ? (
-                        <>
-                            <LinkButton
-                                className={"linkButtonDesign"}
-                                path={"/getAllUsers"}
-                                title={"All Users"}
-                            />
-                            <LinkButton
-                                className={"linkButtonDesign"}
-                                path={"/getAllAppointments"}
-                                title={"GetAllAppointments"}
-                            />
-                        </>
-                    )
-                    : (<></>)
             }
 
 
