@@ -24,14 +24,13 @@ export const Profile = () => {
     useEffect(() => {    
         if (rdxToken) {
             getProfile(rdxToken)
-                .then((response) => {
-                    console.log(response.data);
+                .then((response) => { 
                     setUser(response.data.data);
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-        } else if (!rdxToken) {
+        } else {
             navigate("/login");
         }
     }, []);

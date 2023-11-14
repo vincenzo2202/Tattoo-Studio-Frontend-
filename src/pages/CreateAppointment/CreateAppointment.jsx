@@ -12,8 +12,8 @@ import { selectToken } from "../userSlice";
 
 
 export const CreateAppointment = () => {
-    const navigate = useNavigate();
-
+    
+    const navigate = useNavigate(); 
     const rdxToken = useSelector(selectToken);
 
     const [appointment, setAppointment] = useState({

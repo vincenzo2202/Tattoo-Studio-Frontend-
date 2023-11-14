@@ -18,13 +18,13 @@ export const Appointments = () => {
 
     useEffect(() => { 
 
-        if (rdxToken) {
+        if (rdxToken && appointment.length == 0) {
             appointmentsUsers(rdxToken)
                 .then(response => { 
                     setAppointments(response.data.data)
                 })
                 .catch(error => console.log(error))
-        } else if (!rdxToken) {
+        } else {
             navigate("/login");
         } 
 

@@ -21,11 +21,10 @@ export const GetAllUsers = () => {
                     setUsers(user.data.data)
                 })
                 .catch(error => console.log(error))
-        }else if (!rdxToken) {
+        }else {
             navigate("/login");
         }
-    }, [users])
-    console.log(users);
+    }, [users]) 
 
     return (
         <div className="users-body">

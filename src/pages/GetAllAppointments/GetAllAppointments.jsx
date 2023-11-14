@@ -19,7 +19,7 @@ export const GetAllAppointments = () => {
 
     useEffect(() => { 
            
-            if (rdxToken) {
+            if (rdxToken && appointment.length === 0) {
                 getAllAppointment(rdxToken)
                     .then(response => {
                         console.log(appointment);
