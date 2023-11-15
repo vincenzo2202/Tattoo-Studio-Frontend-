@@ -5,28 +5,20 @@ import "./GetWorkers.css"
 
 export const GetWorkers = () => {
     
-    const [workers, setWorkers] = useState([])
-    // ---------------------------------------
-    // const [message, setMsgError] = useState([]) 
-    // ---------------------------------------
+    const [workers, setWorkers] = useState([]) 
+    const [stop , setStop] = useState(false)
 
     useEffect(() => {
-        if (workers.length === 0) {
+     
             getWorkers()
-                .then(worker => {
-                    // console.log(worker.data);
-                    setWorkers(worker.data.data)
-                    // ---------------------------------------
-                    // esto es para que  no entre en bucle infinito
-                    // if(results.data.data.length !== 0){
-                    //     setPersonajes(results.data.data)
-                    // } else {
-                    //     setMsgError(results.data.message)
-                    // }
-                    // ---------------------------------------
+                .then(worker => { 
+                    if (stop == false) {
+                    setWorkers(worker.data.data) 
+                    setStop(true)
+                }
                 })
                 .catch(error => console.log(error))
-        }
+        
     }, [workers])
     console.log(workers);
 

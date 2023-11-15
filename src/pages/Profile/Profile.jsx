@@ -21,12 +21,18 @@ export const Profile = () => {
         photo: ""
     });
 
+    const [stop , setStop] = useState(false)
+
+
     useEffect(() => {
         if (rdxToken) {
             getProfile(rdxToken)
                 .then((response) => {
+                    if(stop == false){
+
                     setUser(response.data.data);
-                })
+                    setStop(true)
+         } })
                 .catch((error) => {
                     console.log(error);
                 });

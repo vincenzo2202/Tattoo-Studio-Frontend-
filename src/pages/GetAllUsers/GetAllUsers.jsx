@@ -14,6 +14,7 @@ export const GetAllUsers = () => {
     const rdxToken = useSelector(selectToken);
 
     const [users, setUsers] = useState([])
+    const [stop , setStop] = useState(false)
 
     useEffect(() => {
         if (rdxToken) {
@@ -21,8 +22,9 @@ export const GetAllUsers = () => {
             if (decoded.role == "super_admin") {
                 getAllUsers(rdxToken)
                     .then(user => {
-                        if (users.length == 0) {
+                        if (stop == false) {
                             setUsers(user.data.data)
+                            setStop(true)
                         }
                     })
                     .catch(error => console.log(error))

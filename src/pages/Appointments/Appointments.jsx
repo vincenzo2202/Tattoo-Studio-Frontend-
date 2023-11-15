@@ -3,40 +3,44 @@ import "./Appointments.css"
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
 import { appointmentsUsers } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //Rdx
-import { useSelector,  } from "react-redux";
+import { useSelector, } from "react-redux";
 import { selectToken } from "../userSlice";
 
-import { useDispatch } from "react-redux";  
+import { useDispatch } from "react-redux";
 import { idToUpdate } from "../appointmentSlice";
 
 export const Appointments = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
     const dispatch = useDispatch();
 
 
-    const [appointment, setAppointments] = useState([]); 
+    const [appointment, setAppointments] = useState([]);
+    const [stop , setStop] = useState(false)
 
-    useEffect(() => { 
+    useEffect(() => {
 
-        if (rdxToken && appointment.length == 0) {
+        if (rdxToken) {
             appointmentsUsers(rdxToken)
-                .then(response => { 
-                    setAppointments(response.data.data)
+                .then(response => {
+                    if (stop == false) {
+                        setAppointments(response.data.data)
+                        setStop(true)
+                    }
                 })
                 .catch(error => console.log(error))
         } else {
             navigate("/login");
-        } 
+        }
 
-    }, []); 
+    }, [appointment]);
 
-    const rdxIdToUpdate = (id) => { 
-        dispatch(idToUpdate(id)) 
-    }  
+    const rdxIdToUpdate = (id) => {
+        dispatch(idToUpdate(id))
+    }
 
     return (
         <div className="appointments-body">

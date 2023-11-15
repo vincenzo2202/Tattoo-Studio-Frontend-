@@ -4,16 +4,20 @@ import { getAllAppointment } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
-//Rdx
+import { jwtDecode } from "jwt-decode"; 
 import { useSelector } from "react-redux";
-import { selectToken } from "../userSlice";
+import { selectToken } from "../userSlice"; 
+import { useDispatch } from "react-redux";  
+import { idToUpdate } from "../appointmentSlice";
+
 
 export const GetAllAppointments = () => {
     const rdxToken = useSelector(selectToken);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [appointments, setAppointments] = useState([])
+    const [stop , setStop] = useState(false)
 
     useEffect(() => {
         if (rdxToken) {
@@ -22,8 +26,9 @@ export const GetAllAppointments = () => {
                 getAllAppointment(rdxToken)
                     .then(
                         response => {
-                            if(appointments.length == 0){
+                            if(stop == false){
                                 setAppointments(response.data.data);
+                                setStop(true)
                             }
                     })
                     .catch(error => console.log(error));
@@ -35,9 +40,10 @@ export const GetAllAppointments = () => {
         }
     }, [appointments]);
 
-    const localStorageId = (argumento) => {
-        localStorage.setItem("appointmentId", argumento)
-    }
+    const rdxIdToUpdate = (id) => { 
+        dispatch(idToUpdate(id)) 
+    } 
+ 
 
     return (
         <div className="appointments-body">
@@ -74,7 +80,7 @@ export const GetAllAppointments = () => {
                                         client_email={appointment.user_email}
                                         client_name={appointment.user_name}
                                         status={appointment.status}
-                                        emit={() => localStorageId(appointment.id)}
+                                        emit={() => rdxIdToUpdate(appointment.id)}
                                     />
                                 )
                             })

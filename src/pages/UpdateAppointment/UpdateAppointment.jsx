@@ -8,12 +8,12 @@ import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
 //Rdx
 import { useSelector } from "react-redux";
-import { selectIdToUpdate } from "../appointmentSlice"; 
+import { selectIdToUpdate } from "../appointmentSlice";
 import { selectToken } from "../userSlice";
 
 export const UpdateAppointment = () => {
- 
-    const rdxIdtoUpdate = useSelector(selectIdToUpdate)  
+
+    const rdxIdtoUpdate = useSelector(selectIdToUpdate)
     const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
 
@@ -25,7 +25,7 @@ export const UpdateAppointment = () => {
         portfolioId: "",
 
     });
-    
+
     const [appointmentError, setAppointmentError] = useState({
         idError: "",
         dateError: "",
@@ -35,12 +35,17 @@ export const UpdateAppointment = () => {
 
     });
 
+    const [stop , setStop] = useState(false)
+
     useEffect(() => {
-        if (rdxToken && rdxIdtoUpdate ) {  
-            setAppointment((prevState) => ({ ...prevState, id: rdxIdtoUpdate })); 
+        if (rdxToken && rdxIdtoUpdate) {
+            if(stop == false){
+            setAppointment((prevState) => ({ ...prevState, id: rdxIdtoUpdate }));
+            setStop(true)
+            }
         } else {
             navigate("/login");
-        } 
+        }
     }, [])
 
     const [message, setMessage] = useState("");

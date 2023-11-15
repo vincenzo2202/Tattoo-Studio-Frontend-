@@ -1,21 +1,23 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./GetPortfolio.css"
 import { getPortfolio } from "../../services/apiCalls";
 import { CardUser } from "../../common/CardUser/CardUser";
 
-export const GetPortfolio = ()=>{
-    
+export const GetPortfolio = () => {
+
     const [portfolio, setportfolio] = useState([])
+    const [stop, setStop] = useState(false)
 
     useEffect(() => {
-        if (portfolio.length === 0) {
-            getPortfolio()
-                .then(portfolio => {
-                    // console.log(portfolio.data);
+        getPortfolio()
+            .then(portfolio => {
+                if (stop == false) {
                     setportfolio(portfolio.data.data)
-                })
-                .catch(error => console.log(error))
-        }
+                    setStop(true)
+                }
+            })
+            .catch(error => console.log(error))
+
     }, [portfolio])
     console.log(portfolio);
 
