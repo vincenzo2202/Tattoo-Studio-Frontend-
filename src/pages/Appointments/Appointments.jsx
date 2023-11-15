@@ -6,12 +6,16 @@ import { LinkButton } from "../../common/LinkButton/LinkButton";
 import {useNavigate } from "react-router-dom";
 
 //Rdx
-import { useSelector } from "react-redux";
+import { useSelector,  } from "react-redux";
 import { selectToken } from "../userSlice";
+
+import { useDispatch } from "react-redux";  
+import { idToUpdate } from "../appointmentSlice";
 
 export const Appointments = () => {
     const navigate = useNavigate(); 
     const rdxToken = useSelector(selectToken);
+    const dispatch = useDispatch();
 
 
     const [appointment, setAppointments] = useState([]); 
@@ -30,9 +34,9 @@ export const Appointments = () => {
 
     }, []); 
 
-    const localStorageId = (argumento) => {
-        localStorage.setItem("appointmentId", argumento)
-    } 
+    const rdxIdToUpdate = (id) => { 
+        dispatch(idToUpdate(id)) 
+    }  
 
     return (
         <div className="appointments-body">
@@ -60,7 +64,7 @@ export const Appointments = () => {
                                         date={appointment.date}
                                         shift={appointment.shift}
                                         price={appointment.price}
-                                        emit={() => localStorageId(appointment.id)}
+                                        emit={() => rdxIdToUpdate(appointment.id)}
                                     />
                                 )
                             })

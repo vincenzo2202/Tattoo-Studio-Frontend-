@@ -8,11 +8,12 @@ import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
 //Rdx
 import { useSelector } from "react-redux";
+import { selectIdToUpdate } from "../appointmentSlice"; 
 import { selectToken } from "../userSlice";
 
-
 export const UpdateAppointment = () => {
-
+ 
+    const rdxIdtoUpdate = useSelector(selectIdToUpdate)  
     const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
 
@@ -24,6 +25,7 @@ export const UpdateAppointment = () => {
         portfolioId: "",
 
     });
+    
     const [appointmentError, setAppointmentError] = useState({
         idError: "",
         dateError: "",
@@ -33,29 +35,13 @@ export const UpdateAppointment = () => {
 
     });
 
-    // ---------------------------------------
-    // const [message, setMsgError] = useState([]) 
-    // ---------------------------------------
-
     useEffect(() => {
-        if (rdxToken) {
-            const id = localStorage.getItem("appointmentId")// se puede pasar por redux
-            setAppointment((prevState) => ({ ...prevState, id: id }));
-
-            // ---------------------------------------
-            // esto es para que  no entre en bucle infinito
-            // if(results.data.data.length !== 0){
-            //     setPersonajes(results.data.data)
-            // } else {
-            //     setMsgError(results.data.message)
-            // }
-            // ---------------------------------------
+        if (rdxToken && rdxIdtoUpdate ) {  
+            setAppointment((prevState) => ({ ...prevState, id: rdxIdtoUpdate })); 
         } else {
             navigate("/login");
-        }
-
+        } 
     }, [])
-
 
     const [message, setMessage] = useState("");
 
@@ -96,7 +82,7 @@ export const UpdateAppointment = () => {
                     const { message } = response.data;
                     setMessage(message);
                     console.log(message);
-                    if (message == "appointment created succesfully") {// modifique esto para que solo salga si se cambia la cita
+                    if (message == "appointment created succesfully") {
                         setTimeout(() => {
                             navigate("/appointments");
                         }, 2000)
@@ -112,7 +98,6 @@ export const UpdateAppointment = () => {
         <div className="appointment-body">
 
             <div className="input-card">
-
 
                 <CustomInput
                     design={"inputDesign"}
@@ -130,7 +115,6 @@ export const UpdateAppointment = () => {
                     onShiftChange={(value) =>
                         setAppointment((prevState) => ({ ...prevState, shift: value }))
                     }
-
                 />
                 <div className='errorMsg'>{appointmentError.dateError}</div>
 
