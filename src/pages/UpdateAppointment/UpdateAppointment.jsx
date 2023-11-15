@@ -13,7 +13,7 @@ import { selectToken } from "../userSlice";
 
 export const UpdateAppointment = () => {
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
 
     const [appointment, setAppointment] = useState({
@@ -33,11 +33,24 @@ export const UpdateAppointment = () => {
 
     });
 
+    // ---------------------------------------
+    // const [message, setMsgError] = useState([]) 
+    // ---------------------------------------
+
     useEffect(() => {
-        if (rdxToken  ) { 
+        if (rdxToken) {
             const id = localStorage.getItem("appointmentId")// se puede pasar por redux
             setAppointment((prevState) => ({ ...prevState, id: id }));
-        }else  {
+
+            // ---------------------------------------
+            // esto es para que  no entre en bucle infinito
+            // if(results.data.data.length !== 0){
+            //     setPersonajes(results.data.data)
+            // } else {
+            //     setMsgError(results.data.message)
+            // }
+            // ---------------------------------------
+        } else {
             navigate("/login");
         }
 
@@ -76,12 +89,11 @@ export const UpdateAppointment = () => {
                 ...appointment,
                 id: parseInt(appointment.id, 10),
                 portfolioId: parseInt(appointment.portfolioId, 10)
-            }; 
- 
- 
+            };
+
             updateAppointment(appointmentWithNumber, rdxToken)
-                .then((response) => { 
-                    const { message, error } = response.data;
+                .then((response) => {
+                    const { message } = response.data;
                     setMessage(message);
                     console.log(message);
                     if (message == "appointment created succesfully") {// modifique esto para que solo salga si se cambia la cita

@@ -6,6 +6,9 @@ import "./GetWorkers.css"
 export const GetWorkers = () => {
     
     const [workers, setWorkers] = useState([])
+    // ---------------------------------------
+    // const [message, setMsgError] = useState([]) 
+    // ---------------------------------------
 
     useEffect(() => {
         if (workers.length === 0) {
@@ -13,6 +16,14 @@ export const GetWorkers = () => {
                 .then(worker => {
                     // console.log(worker.data);
                     setWorkers(worker.data.data)
+                    // ---------------------------------------
+                    // esto es para que  no entre en bucle infinito
+                    // if(results.data.data.length !== 0){
+                    //     setPersonajes(results.data.data)
+                    // } else {
+                    //     setMsgError(results.data.message)
+                    // }
+                    // ---------------------------------------
                 })
                 .catch(error => console.log(error))
         }

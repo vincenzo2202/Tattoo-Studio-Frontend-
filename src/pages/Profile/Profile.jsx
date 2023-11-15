@@ -11,7 +11,7 @@ import { selectToken } from "../userSlice";
 
 export const Profile = () => {
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
 
     const [user, setUser] = useState({
@@ -21,10 +21,10 @@ export const Profile = () => {
         photo: ""
     });
 
-    useEffect(() => {    
+    useEffect(() => {
         if (rdxToken) {
             getProfile(rdxToken)
-                .then((response) => { 
+                .then((response) => {
                     setUser(response.data.data);
                 })
                 .catch((error) => {

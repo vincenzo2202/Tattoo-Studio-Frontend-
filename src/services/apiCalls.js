@@ -7,6 +7,7 @@ export const logUser = async (body) => {
 export const registerUser = async (body) => {
   return await axios.post(`http://localhost:4000/user/register`, body);
 }
+
 export const getWorkers = async () => {
   return await axios.get(`http://localhost:4000/user/AllWorkers?skip=6&page=1`);
 }
@@ -26,8 +27,6 @@ export const updateUser = (body, token) => {
     },
   });
 };
-
- 
 
 export const appointmentsUsers = (token) => {
   return axios.get('http://localhost:4000/appointment/getAllAppointment?skip=10&page=1', {
@@ -56,8 +55,6 @@ export const updateAppointment = ( body, token) => {
   
 };
 
- 
-
 export const getAllUsers = (token) => {
   return axios.get('http://localhost:4000/user/all?skip=20&page=1', {
     headers: {
@@ -66,6 +63,7 @@ export const getAllUsers = (token) => {
   });
   
 };
+
 export const getAllAppointment = (token) => {
   return axios.get('http://localhost:4000/appointment/AllAppointmentsSuper?skip=5&page=1', {
     headers: {
@@ -74,3 +72,7 @@ export const getAllAppointment = (token) => {
   });
   
 };
+
+export const getPortfolio = async () => {
+  return await axios.get(`http://localhost:4000/user/portfolio?skip=6&page=1`);
+}

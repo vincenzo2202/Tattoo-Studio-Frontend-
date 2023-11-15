@@ -4,32 +4,36 @@ import { getAllAppointment } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
 import { useNavigate } from "react-router-dom";
-
+import { jwtDecode } from "jwt-decode";
 //Rdx
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 
 export const GetAllAppointments = () => {
-
-
-    const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
+    const navigate = useNavigate();
 
-    const [appointment, setAppointments] = useState([]);
+    const [appointments, setAppointments] = useState([])
 
-    useEffect(() => { 
-           
-            if (rdxToken && appointment.length === 0) {
+    useEffect(() => {
+        if (rdxToken) {
+            const decoded = jwtDecode(rdxToken); 
+            if (decoded.role == "super_admin") {
                 getAllAppointment(rdxToken)
-                    .then(response => {
-                        console.log(appointment);
-                        setAppointments(response.data.data)
+                    .then(
+                        response => {
+                            if(appointments.length == 0){
+                                setAppointments(response.data.data);
+                            }
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => console.log(error));
             } else {
-                navigate("/login");
-            }  
-    }, []);
+                navigate("/");
+            }
+        } else {
+            navigate("/");
+        }
+    }, [appointments]);
 
     const localStorageId = (argumento) => {
         localStorage.setItem("appointmentId", argumento)
@@ -38,7 +42,7 @@ export const GetAllAppointments = () => {
     return (
         <div className="appointments-body">
             {
-                appointment
+                  appointments.length > 0
                     ? (<div className='appointments-Roster'>
 
                         <div className='create-appointment-button'>
@@ -48,7 +52,7 @@ export const GetAllAppointments = () => {
                             />
                         </div>
                         {
-                            appointment.map(appointment => {
+                            appointments.map(appointment => {
 
                                 if (appointment.status) {
                                     appointment.status = "pending"
