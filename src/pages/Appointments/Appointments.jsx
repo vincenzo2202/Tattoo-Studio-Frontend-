@@ -18,25 +18,25 @@ export const Appointments = () => {
     const dispatch = useDispatch();
 
 
-    const [appointment, setAppointments] = useState([]);
+    const [appointment, setAppointments] = useState([]); 
     const [stop, setStop] = useState(false)
-
     useEffect(() => {
 
         if (rdxToken) {
             appointmentsUsers(rdxToken)
+            
                 .then(response => {
                     if (stop == false) {
-                        setAppointments(response.data.data)
+                        setAppointments(response.data.data)  
                         setStop(true)
-                    }
+                    } 
                 })
                 .catch(error => console.log(error))
         } else {
             navigate("/login");
         }
 
-    }, [appointment]);
+    }, [appointment]); 
 
     const rdxIdToUpdate = (id) => {
         dispatch(idToUpdate(id))

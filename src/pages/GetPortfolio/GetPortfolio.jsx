@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./GetPortfolio.css"
-import { getPortfolio } from "../../services/apiCalls";
-import { CardUser } from "../../common/CardUser/CardUser";
+import { getPortfolio } from "../../services/apiCalls"; 
+import { CardPortfolio } from "../../common/CardPortfolio/CardPortfolio";
 
 export const GetPortfolio = () => {
 
@@ -29,12 +29,12 @@ export const GetPortfolio = () => {
                         {
                             portfolio.map(portfolio => {
                                 return (
-                                    <CardUser
+                                    <CardPortfolio
                                         key={portfolio.id}
-                                        photo={portfolio.photo}
-                                        full_name={portfolio.full_name}
-                                        phone_number={portfolio.phone_number}
-                                        email={portfolio.email}
+                                        image={portfolio.image}
+                                        name={portfolio.name}
+                                        category={portfolio.category}
+                                        price={portfolio.price + " E"}
                                     />
                                 )
                             }
