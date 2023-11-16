@@ -14,7 +14,6 @@ export const Header = () => {
     const rdxToken = useSelector(selectToken);
     const [decodedToken, setDecodedToken] = useState(null);
 
-
     useEffect(() => {
         try {
             const decoded = jwtDecode(rdxToken);
@@ -24,9 +23,7 @@ export const Header = () => {
         }
 
     }, [rdxToken]);
-
-
-
+ 
     const logOutMe = () => {
         dispatch(logout())
         Navigate("/")
@@ -71,7 +68,7 @@ export const Header = () => {
                             <div className='linkButtonDesign' onClick={logOutMe}>
                                 <LinkButton
                                     classButton={"linkButtonDesign"}
-                                    path={"/"}
+                                    path={"/login"}
                                     title={"log out"}
                                 />
                             </div>

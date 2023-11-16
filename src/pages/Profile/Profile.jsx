@@ -23,7 +23,6 @@ export const Profile = () => {
 
     const [stop , setStop] = useState(false)
 
-
     useEffect(() => {
         if (rdxToken) {
             getProfile(rdxToken)

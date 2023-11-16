@@ -1,9 +1,9 @@
 import "./CreateAppointment.css"
 import React, { useState, useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validator } from "../../services/Validations";
-import { createAppointment } from "../../services/apiCalls";
+import { createAppointment, getPortfolio, getWorkers } from "../../services/apiCalls";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
 //Rdx
@@ -31,13 +31,16 @@ export const CreateAppointment = () => {
 
     });
 
+    const [workers, setWorkers] = useState([]);
+    const [gallery, setgallery] = useState("");
+    const [message, setMessage] = useState("");
+
     useEffect(() => {
         if (!rdxToken) {
             navigate("/login");
         }
     }, []);
 
-    const [message, setMessage] = useState("");
 
     const functionHandler = (e) => {
         setAppointment((prevState) => ({
@@ -85,8 +88,44 @@ export const CreateAppointment = () => {
                     console.log(error);
                 });
 
+        } else {
+            setMessage("All fields are required")
         }
     }
+
+    useEffect(() => {
+
+        if (workers.length === 0) {
+            getWorkers()
+                .then(
+                    results => {
+                        setWorkers(results.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log("artists vale...", workers)
+        }
+    }, [workers]);
+
+
+
+    useEffect(() => {
+
+        if (gallery.length === 0) {
+            getPortfolio()
+                .then(
+                    response => {
+                        setgallery(response.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log(gallery)
+        }
+    }, [gallery]);
+
+
     return (
         <div className="appointment-body">
 
@@ -112,25 +151,40 @@ export const CreateAppointment = () => {
 
                 />
                 <div className='errorMsg'>{appointmentError.dateError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"email"}
-                    name={"email"}
-                    placeholder={"user@gmail.com"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{appointmentError.emailError}</div>
+                {
+                    workers.length > 0 &&
+                    <select className="dropdown" name="email" onChange={functionHandler}>
+                        <option>Select a worker</option>
+                        {
+                            workers.map(
+                                worker => {
+                                    return (
+                                        <option key={worker.id} value={worker.email}>{worker.full_name}</option>
+                                    )
+                                }
+                            )
+                        }
+                    </select>
+                }
 
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"number"}
-                    name={"id"}
-                    placeholder={"55"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{appointmentError.idError}</div>
+                {
+                    gallery.length > 0 &&
+
+                    <select className="tattoos" name="id" onChange={functionHandler}>
+                        <option>Select a service</option>
+                        {
+                            gallery.map(
+                                service => {
+                                    return (
+                                        <option key={service.id} value={service.id}>{service.name}</option>
+                                    )
+                                }
+                            )
+                        }
+                    </select>
+                }
+
+
 
                 <div className='animated-button' onClick={Create}>Create</div>
 

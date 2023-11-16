@@ -20,11 +20,11 @@ export const Appointments = () => {
 
     const [appointment, setAppointments] = useState([]); 
     const [stop, setStop] = useState(false)
+    
     useEffect(() => {
 
         if (rdxToken) {
-            appointmentsUsers(rdxToken)
-            
+            appointmentsUsers(rdxToken) 
                 .then(response => {
                     if (stop == false) {
                         setAppointments(response.data.data)  

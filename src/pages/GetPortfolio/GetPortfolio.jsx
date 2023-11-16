@@ -34,7 +34,7 @@ export const GetPortfolio = () => {
                                         image={portfolio.image}
                                         name={portfolio.name}
                                         category={portfolio.category}
-                                        price={portfolio.price + " E"}
+                                        price={portfolio.price + " €"}
                                     />
                                 )
                             }

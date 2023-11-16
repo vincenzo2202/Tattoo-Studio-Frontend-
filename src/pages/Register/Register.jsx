@@ -12,8 +12,7 @@ import { selectToken } from "../userSlice";
 export const Register = () => {
 
     const navigate = useNavigate(); 
-    const rdxToken = useSelector(selectToken);
- 
+    const rdxToken = useSelector(selectToken); 
 
     const [credentials, setCredentials] = useState({
         full_name: "",
@@ -37,7 +36,8 @@ export const Register = () => {
         }
     }, []);
 
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState(""); 
+    
 
     const functionHandler = (e) => {
         setCredentials((prevState) => ({
@@ -56,7 +56,7 @@ export const Register = () => {
             ...prevState,
             [e.target.name + 'Error']: error,
         }));
-    }
+    } 
 
     const photoInputDefault = (photo) => (photo === "" ? undefined : photo);
 
@@ -72,11 +72,10 @@ export const Register = () => {
                 photo: photoInputDefault(credentials.photo)
             };
             registerUser(credentialsWithNumber)
-                .then((response) => {
-                    console.log(response.data);
-                    const { message, success } = response.data;
+                .then((response) => { 
+                    const { message } = response.data;
                     setMessage(message);
-                    if (error.target.value != "") {
+                    if (message == "user registered succesfully") { 
                         setTimeout(() => {
                             navigate("/login");
                         }, 2000)
@@ -86,7 +85,7 @@ export const Register = () => {
                     console.log(error);
                 });
         }
-    };
+    }; 
 
     return (
         <div className="register-body">

@@ -82,7 +82,7 @@ export const deleteAppointment = async (token,id) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    data: { id: id,},
+    data: { id: id},
   })
 };
 
