@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./UpdateAppointment.css"
-import { updateAppointment } from "../../services/apiCalls";
+import { getPortfolio, getWorkers, updateAppointment } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { validator } from "../../services/Validations";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
@@ -35,13 +35,13 @@ export const UpdateAppointment = () => {
 
     });
 
-    const [stop , setStop] = useState(false)
+    const [stop, setStop] = useState(false)
 
     useEffect(() => {
         if (rdxToken && rdxIdtoUpdate) {
-            if(stop == false){
-            setAppointment((prevState) => ({ ...prevState, id: rdxIdtoUpdate }));
-            setStop(true)
+            if (stop == false) {
+                setAppointment((prevState) => ({ ...prevState, id: rdxIdtoUpdate }));
+                setStop(true)
             }
         } else {
             navigate("/login");
@@ -96,8 +96,43 @@ export const UpdateAppointment = () => {
                 .catch(error => {
                     console.log(error);
                 });
+        }else {
+            setMessage("All fields are required")
         }
     };
+
+    const [workers, setWorkers] = useState([]);
+    const [gallery, setgallery] = useState("");
+
+    useEffect(() => {
+
+        if (workers.length === 0) {
+            getWorkers()
+                .then(
+                    results => {
+                        setWorkers(results.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log("artists vale...", workers)
+        }
+    }, [workers]);
+
+    useEffect(() => {
+
+        if (gallery.length === 0) {
+            getPortfolio()
+                .then(
+                    response => {
+                        setgallery(response.data.data)
+                    }
+                )
+                .catch(error => console.log(error))
+        } else {
+            console.log(gallery)
+        }
+    }, [gallery]);
 
     return (
         <div className="appointment-body">
@@ -123,26 +158,37 @@ export const UpdateAppointment = () => {
                 />
                 <div className='errorMsg'>{appointmentError.dateError}</div>
 
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"number"}
-                    name={"portfolioId"}
-                    placeholder={"55"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{appointmentError.portfolioIdError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"email"}
-                    name={"email"}
-                    placeholder={"user@gmail.com"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{appointmentError.emailError}</div>
+                {
+                    workers.length > 0 &&
+                    <select className="dropdown" name="email" onChange={functionHandler}>
+                        <option>Select a worker</option>
+                        {
+                            workers.map(
+                                worker => {
+                                    return (
+                                        <option key={worker.id} value={worker.email}>{worker.full_name}</option>
+                                    )
+                                }
+                            )
+                        }
+                    </select>
+                }
+                {
+                    gallery.length > 0 &&
 
-
+                    <select className="tattoos" name="portfolioId" onChange={functionHandler}>
+                        <option>Select a service</option>
+                        {
+                            gallery.map(
+                                service => {
+                                    return (
+                                        <option key={service.id} value={service.id}>{service.name}</option>
+                                    )
+                                } 
+                            )
+                        }
+                    </select>
+                } 
 
                 <div className='animated-button' onClick={Update}>Update</div>
 

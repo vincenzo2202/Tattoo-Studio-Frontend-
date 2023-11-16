@@ -8,23 +8,26 @@ import { jwtDecode } from "jwt-decode";
 //Rdx
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
+import { Pagination } from "../../common/Pagination/Pagination";
 
 export const GetAllUsers = () => {
     const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
 
     const [users, setUsers] = useState([])
-    const [stop , setStop] = useState(false)
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
         if (rdxToken) {
             const decoded = jwtDecode(rdxToken);
             if (decoded.role == "super_admin") {
-                getAllUsers(rdxToken)
+                const pageString = page.toString()
+                getAllUsers(rdxToken, pageString)
                     .then(user => {
-                        if (stop == false) {
+                        if (Array.isArray(user.data.data)) {
                             setUsers(user.data.data)
-                            setStop(true)
+                        } else {
+                            setPage(page - 1)
                         }
                     })
                     .catch(error => console.log(error))
@@ -34,12 +37,33 @@ export const GetAllUsers = () => {
         } else {
             navigate("/");
         }
-    }, [users])
+    }, [page])
+
+    const up = () => {
+        setPage(page + 1)
+    }
+
+    const down = () => {
+        if (page >= 2) {
+            setPage(page - 1)
+        }
+    }
 
     return (
         <div className="users-body">
+            <Pagination
+                ClassPage={"previus"}
+                text={"previus"}
+                paginationChanger={() => down()}
+
+            />
+            <Pagination
+                ClassPage={"next"}
+                text={"next"}
+                paginationChanger={() => up()}
+            />
             {
-                users.length > 0 
+                users.length > 0
                     ? (<div className='users-Roster'>
                         {
                             users.map(users => {

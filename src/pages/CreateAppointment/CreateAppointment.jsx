@@ -31,8 +31,8 @@ export const CreateAppointment = () => {
 
     });
 
-    const [workers, setWorkers] = useState([]);
-    const [gallery, setgallery] = useState("");
+  
+
     const [message, setMessage] = useState("");
 
     useEffect(() => {
@@ -93,6 +93,10 @@ export const CreateAppointment = () => {
         }
     }
 
+    
+    const [workers, setWorkers] = useState([]);
+    const [gallery, setgallery] = useState("");
+    
     useEffect(() => {
 
         if (workers.length === 0) {
@@ -106,9 +110,7 @@ export const CreateAppointment = () => {
         } else {
             console.log("artists vale...", workers)
         }
-    }, [workers]);
-
-
+    }, [workers]); 
 
     useEffect(() => {
 
@@ -123,8 +125,7 @@ export const CreateAppointment = () => {
         } else {
             console.log(gallery)
         }
-    }, [gallery]);
-
+    }, [gallery]); 
 
     return (
         <div className="appointment-body">
@@ -166,7 +167,6 @@ export const CreateAppointment = () => {
                         }
                     </select>
                 }
-
                 {
                     gallery.length > 0 &&
 
@@ -182,9 +182,7 @@ export const CreateAppointment = () => {
                             )
                         }
                     </select>
-                }
-
-
+                }  
 
                 <div className='animated-button' onClick={Create}>Create</div>
 

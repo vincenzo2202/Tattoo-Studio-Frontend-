@@ -4,11 +4,12 @@ import { getAllAppointment } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; 
+import { jwtDecode } from "jwt-decode";
 import { useSelector } from "react-redux";
-import { selectToken } from "../userSlice"; 
-import { useDispatch } from "react-redux";  
+import { selectToken } from "../userSlice";
+import { useDispatch } from "react-redux";
 import { idToUpdate } from "../appointmentSlice";
+import { Pagination } from "../../common/Pagination/Pagination";
 
 
 export const GetAllAppointments = () => {
@@ -17,20 +18,22 @@ export const GetAllAppointments = () => {
     const dispatch = useDispatch();
 
     const [appointments, setAppointments] = useState([])
-    const [stop , setStop] = useState(false)
+    const [page, setPage] = useState(1) 
 
     useEffect(() => {
         if (rdxToken) {
-            const decoded = jwtDecode(rdxToken); 
+            const decoded = jwtDecode(rdxToken);
             if (decoded.role == "super_admin") {
-                getAllAppointment(rdxToken)
+                const pageString = page.toString()
+                getAllAppointment(rdxToken,pageString)
                     .then(
                         response => {
-                            if(stop == false){
+                            if (Array.isArray(response.data.data)) {
                                 setAppointments(response.data.data);
-                                setStop(true)
+                            } else {
+                                setPage(page - 1)
                             }
-                    })
+                        })
                     .catch(error => console.log(error));
             } else {
                 navigate("/");
@@ -38,17 +41,36 @@ export const GetAllAppointments = () => {
         } else {
             navigate("/");
         }
-    }, [appointments]);
+    }, [page]);
 
-    const rdxIdToUpdate = (id) => { 
-        dispatch(idToUpdate(id)) 
-    } 
- 
+    const rdxIdToUpdate = (id) => {
+        dispatch(idToUpdate(id))
+    }
+
+    const up = () => {
+        setPage(page + 1)
+    }
+
+    const down = () => {
+        if (page >= 2) {
+            setPage(page - 1)
+        }
+    }
 
     return (
         <div className="appointments-body">
+            <Pagination
+                ClassPage={"previus"}
+                text={"previus"}
+                paginationChanger={() => down()}
+            />
+            <Pagination
+                ClassPage={"next"}
+                text={"next"}
+                paginationChanger={() => up()}
+            />
             {
-                  appointments.length > 0
+                appointments.length > 0
                     ? (<div className='appointments-Roster'>
 
                         <div className='create-appointment-button'>

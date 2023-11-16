@@ -11,6 +11,7 @@ import { selectToken } from "../userSlice";
 
 import { useDispatch } from "react-redux";
 import { idToUpdate } from "../appointmentSlice";
+import { Pagination } from "../../common/Pagination/Pagination";
 
 export const Appointments = () => {
     const navigate = useNavigate();
@@ -18,32 +19,34 @@ export const Appointments = () => {
     const dispatch = useDispatch();
 
 
-    const [appointment, setAppointments] = useState([]); 
-    const [stop, setStop] = useState(false)
-    
+    const [appointment, setAppointments] = useState([]);
+    const [page, setPage] = useState(1)
+
     useEffect(() => {
 
         if (rdxToken) {
-            appointmentsUsers(rdxToken) 
+            const pageString = page.toString()
+            appointmentsUsers(rdxToken, pageString)
                 .then(response => {
-                    if (stop == false) {
-                        setAppointments(response.data.data)  
-                        setStop(true)
-                    } 
+                    if (Array.isArray(response.data.data) && response.data.data !=0 ) {
+                        setAppointments(response.data.data)
+                    } else {
+                        setPage(page - 1)
+                    }
                 })
                 .catch(error => console.log(error))
         } else {
             navigate("/login");
         }
 
-    }, [appointment]); 
+    }, [page]);
 
     const rdxIdToUpdate = (id) => {
         dispatch(idToUpdate(id))
     }
 
-    const removeAppointment = ( token,id) => {
-        deleteAppointment(token,id)
+    const removeAppointment = (token, id) => {
+        deleteAppointment(token, id)
             .then(response => {
                 console.log(response);
                 setAppointments(prevAppointments => prevAppointments.filter(app => app.id !== id));
@@ -51,8 +54,31 @@ export const Appointments = () => {
             .catch(error => console.log(error));
     }
 
+    const up = () => { 
+            setPage(page + 1)
+    }
+
+    const down = () => {
+        if (page >= 2) {
+            setPage(page - 1)
+        }
+    }
+
+
     return (
         <div className="appointments-body">
+
+            <Pagination
+                ClassPage={"previus"}
+                text={"previus"}
+                paginationChanger={() => down()}
+
+            />
+            <Pagination
+                ClassPage={"next"}
+                text={"next"}
+                paginationChanger={() => up()}
+            />
             {
                 appointment
                     ? (<div className='appointments-Roster'>
