@@ -1,8 +1,8 @@
-import './RemoveButton.css'
+import './LinkDelete.css'
 
-export const LinkDelete = ({ emit }) => {
+export const LinkDelete = ({ deleted }) => {
 
     return (
-        <div className="delete" onClick={() => emit(path)}>Remove</div>
+        <div className="delete" onClick={() => deleted()}>Remove</div>
     )
 }

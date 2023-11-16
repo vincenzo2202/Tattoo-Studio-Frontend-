@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Appointments.css"
 import { CardsAppointments } from "../../common/CardsAppointment/CardsAppointment";
-import { appointmentsUsers } from "../../services/apiCalls";
+import { appointmentsUsers, deleteAppointment } from "../../services/apiCalls";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export const Appointments = () => {
 
 
     const [appointment, setAppointments] = useState([]);
-    const [stop , setStop] = useState(false)
+    const [stop, setStop] = useState(false)
 
     useEffect(() => {
 
@@ -40,6 +40,15 @@ export const Appointments = () => {
 
     const rdxIdToUpdate = (id) => {
         dispatch(idToUpdate(id))
+    }
+
+    const removeAppointment = ( token,id) => {
+        deleteAppointment(token,id)
+            .then(response => {
+                console.log(response);
+                setAppointments(prevAppointments => prevAppointments.filter(app => app.id !== id));
+            })
+            .catch(error => console.log(error));
     }
 
     return (
@@ -69,6 +78,7 @@ export const Appointments = () => {
                                         shift={appointment.shift}
                                         price={appointment.price}
                                         emit={() => rdxIdToUpdate(appointment.id)}
+                                        deleted={() => removeAppointment(rdxToken, appointment.id)}
                                     />
                                 )
                             })

@@ -34,25 +34,25 @@ export const appointmentsUsers = (token) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  
+
 };
 
-export const createAppointment = ( body, token) => {
-  return axios.post('http://localhost:4000/appointment/createAppointment', body,{
+export const createAppointment = (body, token) => {
+  return axios.post('http://localhost:4000/appointment/createAppointment', body, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  
+
 };
 
-export const updateAppointment = ( body, token) => {
-  return axios.put('http://localhost:4000/appointment/updateAppointment', body,{
+export const updateAppointment = (body, token) => {
+  return axios.put('http://localhost:4000/appointment/updateAppointment', body, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  
+
 };
 
 export const getAllUsers = (token) => {
@@ -61,7 +61,7 @@ export const getAllUsers = (token) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  
+
 };
 
 export const getAllAppointment = (token) => {
@@ -70,9 +70,20 @@ export const getAllAppointment = (token) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  
+
 };
 
 export const getPortfolio = async () => {
   return await axios.get(`http://localhost:4000/user/portfolio?skip=6&page=1`);
 }
+
+export const deleteAppointment = async (token,id) => { 
+  return await axios.delete(`http://localhost:4000/appointment/deleteAppointment`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: { id: id,},
+  })
+};
+
+

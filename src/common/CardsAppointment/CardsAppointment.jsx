@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./CardsAppointment.css"
 import { LinkButton } from "../LinkButton/LinkButton";
+import { LinkDelete } from "../LinkDelete/LinkDelete";
 
-export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, emailWorker, nameWorker, appointmentId, date, shift, price, emit, client_name, client_email, status }) => {
+export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, emailWorker, nameWorker, appointmentId, date, shift, price, emit, client_name, client_email, status,deleted }) => {
 
     const [collapsed, setCollapsed] = useState(true);
 
@@ -43,6 +44,9 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                             <img src="https://cdn.icon-icons.com/icons2/1558/PNG/512/353430-checkbox-edit-pen-pencil_107516.png" alt="" />
                         </div>}
                         emit={() => emit()}
+                    />
+                    <LinkDelete 
+                    deleted={() => deleted()}
                     />
                 </div>
             )}
