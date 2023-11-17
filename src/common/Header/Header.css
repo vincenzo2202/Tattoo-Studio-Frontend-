@@ -1,22 +1,30 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Dancing+Script&family=Young+Serif&display=swap');
+
+
 .button-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 10vh;
-    width: 100vw; 
-    background-color: rgb(217, 150, 125);
+    width: 100vw;  
+    position: absolute;
+    top: 1em; 
+    font-size: 1.5em;
+    background-color: rgba(255, 255, 255, 0.086); 
+    font-family: 'Cinzel', serif;
     
 }
 
-.appointment-button{
-    width: 9em;
-    height: 2em;
-    background-color: bisque;
-    border: 0.2em solid black;
-    border-radius: 0.7em;
-    color: black; 
-    margin: 1em;
+.header-button{
+    color: white;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+
+    font-size: 1em;
+    cursor: pointer;
 }
 
  

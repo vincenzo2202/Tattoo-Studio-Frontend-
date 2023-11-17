@@ -28,7 +28,7 @@ export const Appointments = () => {
             const pageString = page.toString()
             appointmentsUsers(rdxToken, pageString)
                 .then(response => {
-                    if (Array.isArray(response.data.data) && response.data.data !=0 ) {
+                    if (  response.data.data.length !=0 ) {
                         setAppointments(response.data.data)
                     } else {
                         setPage(page - 1)
@@ -56,11 +56,13 @@ export const Appointments = () => {
 
     const up = () => { 
             setPage(page + 1)
+            console.log(page);
     }
 
     const down = () => {
         if (page >= 2) {
             setPage(page - 1)
+            console.log(page);
         }
     }
 
@@ -68,17 +70,7 @@ export const Appointments = () => {
     return (
         <div className="appointments-body">
 
-            <Pagination
-                ClassPage={"previus"}
-                text={"previus"}
-                paginationChanger={() => down()}
-
-            />
-            <Pagination
-                ClassPage={"next"}
-                text={"next"}
-                paginationChanger={() => up()}
-            />
+        
             {
                 appointment
                     ? (<div className='appointments-Roster'>
@@ -117,6 +109,17 @@ export const Appointments = () => {
                         <div>Loading...</div>
                     )
             }
+                <Pagination
+                ClassPage={"previus"}
+                text={"previus"}
+                paginationChanger={() => down()}
+
+            />
+            <Pagination
+                ClassPage={"next"}
+                text={"next"}
+                paginationChanger={() => up()}
+            />
         </div>
     )
 }

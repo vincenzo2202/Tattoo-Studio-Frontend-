@@ -33,18 +33,18 @@ export const Header = () => {
     return (
         <div className='button-container'>
             <LinkButton
-                className={"linkButtonDesign"}
+                className={"header-button"}
                 path={"/home"}
                 title={"Home"}
             />
 
             <LinkButton
-                className={"linkButtonDesign"}
+                className={"header-button"}
                 path={"/workers"}
                 title={"Workers"}
             />
             <LinkButton
-                className={"linkButtonDesign"}
+                className={"header-button"}
                 path={"/portfolio"}
                 title={"Portfolio"}
             />
@@ -54,18 +54,18 @@ export const Header = () => {
                     ? (
                         <>
                             <LinkButton
-                                className={"linkButtonDesign"}
+                                className={"header-button"}
                                 path={"/profile"}
                                 title={"Profile"}
                             />
 
                             <LinkButton
-                                className={"linkButtonDesign"}
+                                className={"header-button"}
                                 path={"/appointments"}
                                 title={"Appointments"}
                             />
 
-                            <div className='linkButtonDesign' onClick={logOutMe}>
+                            <div className='header-button' onClick={logOutMe}>
                                 <LinkButton
                                     classButton={"linkButtonDesign"}
                                     path={"/login"}
@@ -77,12 +77,12 @@ export const Header = () => {
                                 (
                                     <>
                                         <LinkButton
-                                            className={"linkButtonDesign"}
+                                            className={"header-button"}
                                             path={"/getAllUsers"}
                                             title={"All Users"}
                                         />
                                         <LinkButton
-                                            className={"linkButtonDesign"}
+                                            className={"header-button"}
                                             path={"/getAllAppointments"}
                                             title={"GetAllAppointments"}
                                         />
@@ -94,12 +94,12 @@ export const Header = () => {
                     (
                         <>
                             <LinkButton
-                                className={"linkButtonDesign"}
+                                className={"header-button"}
                                 path={"/login"}
                                 title={"Login"}
                             />
                             <LinkButton
-                                className={"linkButtonDesign"}
+                                className={"header-button"}
                                 path={"/register"}
                                 title={"Register"}
                             />

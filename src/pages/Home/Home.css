@@ -1,8 +1,48 @@
 .home-body{
-    height: 90vh;
+    height: 100vh;
     width: 100vw;
     background-color: rgb(63, 95, 95);
-
     display: flex;
     justify-content: center;
+    background-image:url(../../assets/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position:absolute;
+    top: 0;
+    z-index: -100;
+    
+}
+
+
+.linkButtonDesign{
+    width: 5em;
+    height: 3em;
+    background-color: rgb(15, 157, 18);
+    border: 0.2em solid black; 
+    color: rgb(199, 135, 135); 
+    cursor: pointer;
+    margin: 1em;
+}
+
+.title{
+    font-family: 'Cinzel', serif;
+    position: absolute;
+    top: 6em;
+    font-size: 5em;
+}
+
+
+.logo{
+    height: 20em;
+    width: 20em;
+    background-image:url(../../assets/42cea1eb-e7ef-449e-a2ec-25301714895c.png);
+    z-index: 100;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;  
+    position: absolute;
+    top: 10em;
+    
+
 }

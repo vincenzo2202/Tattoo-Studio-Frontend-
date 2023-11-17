@@ -4,7 +4,24 @@
   text-align: center;
   overflow-x: hidden;
 }
+/* @media only screen and (max-width: 990px) {
+  html {
+    font-size: 0.7em;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  html {
+    font-size: 0.5em;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  html {
+    font-size: 0.33em;
+  } 
+}
  
  
 
- 
+  */
