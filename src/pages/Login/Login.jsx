@@ -60,9 +60,8 @@ export const Login = () => {
     }
 
     const logMe = () => {
-
         if (credentials.password != "" &&
-            credentials.email != "") {
+            credentials.email != ""){
             logUser(credentials)
                 .then((response) => {
                     const { message, token } = response.data;

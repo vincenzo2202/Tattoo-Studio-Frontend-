@@ -3,7 +3,13 @@ import "./Register.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { useNavigate } from "react-router-dom";
 import { validator } from "../../services/Validations";
-import { registerUser } from "../../services/apiCalls";
+import { logUser, registerUser } from "../../services/apiCalls";
+
+ 
+//Importo Rdx
+
+import { useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
+import { login } from "../userSlice";
 
 //Rdx
 import { useSelector } from "react-redux";
@@ -13,6 +19,7 @@ export const Register = () => {
 
     const navigate = useNavigate(); 
     const rdxToken = useSelector(selectToken); 
+    const dispatch = useDispatch();
 
     const [credentials, setCredentials] = useState({
         full_name: "",
@@ -75,17 +82,36 @@ export const Register = () => {
                 .then((response) => { 
                     const { message } = response.data;
                     setMessage(message);
-                    if (message == "user registered succesfully") { 
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    };  
+
+    useEffect(()=>{
+        if (message == "user registered succesfully" ){
+            console.log("hola");
+            console.log(credentials);
+            logUser(credentials)
+                .then((response) => {
+                    const { message, token } = response.data;
+                    setMessage(message); 
+                    if (message === "user logged succesfully") {
+                        dispatch(login(token))
+                        console.log("andrew savage ");
+                        
                         setTimeout(() => {
-                            navigate("/login");
-                        }, 2000)
+                            navigate("/profile");
+                        }, 300)
                     }
                 })
                 .catch(error => {
                     console.log(error);
                 });
         }
-    }; 
+    },[message])
 
     return (
         <div className="register-body">
