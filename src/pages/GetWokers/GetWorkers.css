@@ -18,11 +18,11 @@
     justify-content: center;
     flex-wrap: wrap;
     position: absolute;
-    top: 10em;
+    top: 11em;
 }
 
 
-.pagination{
+.pagination-workers{
     width: 100vw;
     height: 5em;
     display: flex;

@@ -36,7 +36,7 @@ export const GetWorkers = () => {
     return (
         <div className="workers-body">
 
-            <div className="pagination">
+            <div className="pagination-workers">
 
              <Pagination
                 ClassPage={"button"}

@@ -35,7 +35,7 @@ const down =()=>{
 
     return (
         <div className="portfolio-body">
-            <div className="pagination"> 
+            <div className="pagination-portfolio"> 
              <Pagination
                 ClassPage={"previus"}
                 text={"previus"}
