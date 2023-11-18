@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Dancing+Script&family=Young+Serif&display=swap');
+
 .card-portfolio {
     height: 15em;
     width: 15em;
@@ -15,8 +17,9 @@
     transition: 1s;
     padding: 1em;
     margin: 1em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 1.2em;
+    user-select : none
 }
 
 .portfolio { 

@@ -3,7 +3,7 @@ import "./CardPortfolio.css";
 
 export const CardPortfolio = ({ image, name, category, price }) => {
     return (
-        <div className="card-portfolio ">
+        <div className="card-portfolio " dragable="false">
 
             <img className="portfolio" src={image} alt={name} />
 

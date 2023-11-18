@@ -47,7 +47,7 @@ export const Profile = () => {
                     ? (
                         <div className="div-photo">
                             <img src={user.photo} alt="User" />
-                            <h1>Hola, {user.full_name}!</h1>
+                            <h1>Hi, {user.full_name}!</h1>
                             <div>Name: {user.full_name}</div>
                             <div>Email: {user.email}</div>
                             <div>Phone: {user.phone_number}</div>
