@@ -35,6 +35,7 @@ const down =()=>{
 
     return (
         <div className="portfolio-body">
+            <div className="pagination"> 
              <Pagination
                 ClassPage={"previus"}
                 text={"previus"}
@@ -45,7 +46,8 @@ const down =()=>{
                 ClassPage={"next"}
                 text={"next"}
                 paginationChanger={() => up()}
-            />
+            /> 
+            </div>
             
             {
                 portfolio.length > 0

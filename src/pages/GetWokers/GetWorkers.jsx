@@ -35,17 +35,22 @@ export const GetWorkers = () => {
 
     return (
         <div className="workers-body">
+
+            <div className="pagination">
+
              <Pagination
-                ClassPage={"previus"}
+                ClassPage={"button"}
                 text={"previus"}
                 paginationChanger={() => down()}
 
             />
             <Pagination
-                ClassPage={"next"}
+                ClassPage={"button"}
                 text={"next"}
                 paginationChanger={() => up()}
             />
+            </div>
+                
             {
                 workers.length > 0
                     ? (<div className='worker-Roster'>

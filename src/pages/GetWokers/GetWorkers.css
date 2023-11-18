@@ -18,7 +18,17 @@
     justify-content: center;
     flex-wrap: wrap;
     position: absolute;
-    top: 14em;
+    top: 10em;
 }
 
+
+.pagination{
+    width: 100vw;
+    height: 5em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: 6.5em;
+}
  

@@ -9,7 +9,7 @@ export const registerUser = async (body) => {
 }
 
 export const getWorkers = async (page) => {
-  return await axios.get(`http://localhost:4000/user/AllWorkers?skip=6&page=${page}`);
+  return await axios.get(`http://localhost:4000/user/AllWorkers?skip=8&page=${page}`);
 }
 
 export const getProfile = async (token) => {
