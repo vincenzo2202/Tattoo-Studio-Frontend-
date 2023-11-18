@@ -3,6 +3,7 @@ import "./GetPortfolio.css"
 import { getPortfolio } from "../../services/apiCalls"; 
 import { CardPortfolio } from "../../common/CardPortfolio/CardPortfolio";
 import { Pagination } from "../../common/Pagination/Pagination";
+import { Rating } from "../../common/Rating/Rating";
 
 export const GetPortfolio = () => {
 
@@ -55,13 +56,15 @@ const down =()=>{
                         {
                             portfolio.map(portfolio => {
                                 return (
+                                    <div className="inside-card"> 
                                     <CardPortfolio
                                         key={portfolio.id}
                                         image={portfolio.image}
                                         name={portfolio.name}
                                         category={portfolio.category}
                                         price={portfolio.price + " €"}
-                                    />
+                                    /> 
+                                    </div>
                                 )
                             }
                             )}

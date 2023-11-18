@@ -15,6 +15,7 @@ export const CardUser = ({ full_name, photo, phone_number, email, key, is_active
                 <div className="is_active">{is_active}</div>
                 <div className="role_id">{role_id}</div>
             </div>
+           
 
         </div>
     )

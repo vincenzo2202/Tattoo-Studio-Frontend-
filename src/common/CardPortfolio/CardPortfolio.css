@@ -5,7 +5,6 @@
     width: 15em;
 
     border-radius: 1em;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,3 +49,4 @@
     opacity: 1;
     transition: 0.5s;
 }
+ 

@@ -3,12 +3,12 @@
     width: 100vw;
     background-color: rgb(63, 95, 95);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-image:url(../../assets/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;   
-    top: 7em;
     z-index: -100;
 }
 
@@ -20,15 +20,55 @@
     display: flex; 
     flex-direction: column;
     align-items: center; 
+position: absolute;
+margin-top: 14em;
  
 }
 
-.create-appointment-button{
-    width: 5em;
-    height: 2em;
-    background-color: rgb(235, 129, 0);
-    border: 0.2em solid black;
-    border-radius: 0.7em;
-    color: black; 
+
+.pagination-appointments{
+    width: 100vw;
+    height: 5em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 7em;
+} 
+
+.create-appointment-button {
+    width: 6em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: #fff;
+    background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+    border-radius: 20px;
+    background-size: 100% auto;
+    font-family: inherit;
+    font-size: 17px;
+    padding: 0.6em 1.5em;
+   }
+   
+   .create-appointment-button:hover {
+    background-position: right center;
+    background-size: 200% auto; 
+    -moz-animation: pulse512 1.5s infinite;   
+    animation: pulse512 1.5s infinite;       
 }
- 
+
+@keyframes pulse512 {
+    0% {
+        box-shadow: 0 0 0 0 rgba(5, 186, 218, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(218, 103, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(218, 103, 68, 0);
+    }
+}

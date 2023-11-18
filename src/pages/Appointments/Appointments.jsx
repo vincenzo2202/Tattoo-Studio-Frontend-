@@ -28,7 +28,7 @@ export const Appointments = () => {
             const pageString = page.toString()
             appointmentsUsers(rdxToken, pageString)
                 .then(response => {
-                    if (  response.data.data.length !=0 ) {
+                    if (response.data.data.length != 0) {
                         setAppointments(response.data.data)
                     } else {
                         setPage(page - 1)
@@ -54,9 +54,9 @@ export const Appointments = () => {
             .catch(error => console.log(error));
     }
 
-    const up = () => { 
-            setPage(page + 1)
-            console.log(page);
+    const up = () => {
+        setPage(page + 1)
+        console.log(page);
     }
 
     const down = () => {
@@ -70,17 +70,33 @@ export const Appointments = () => {
     return (
         <div className="appointments-body">
 
-        
+            <div className="pagination-appointments">
+                <Pagination
+                    ClassPage={"previus"}
+                    text={"previus"}
+                    paginationChanger={() => down()}
+
+                />
+                <div className='create-appointment-button'>
+                    <LinkButton
+                        path={"/createAppointment"}
+                        title={"Create"}
+                    />
+                </div>
+                <Pagination
+                    ClassPage={"next"}
+                    text={"next"}
+                    paginationChanger={() => up()}
+                />
+            </div>
+
+
+
             {
                 appointment
                     ? (<div className='appointments-Roster'>
 
-                        <div className='create-appointment-button'>
-                            <LinkButton
-                                path={"/createAppointment"}
-                                title={"Create"}
-                            />
-                        </div>
+
 
                         {
                             appointment.map(appointment => {
@@ -109,17 +125,7 @@ export const Appointments = () => {
                         <div>Loading...</div>
                     )
             }
-                <Pagination
-                ClassPage={"previus"}
-                text={"previus"}
-                paginationChanger={() => down()}
 
-            />
-            <Pagination
-                ClassPage={"next"}
-                text={"next"}
-                paginationChanger={() => up()}
-            />
         </div>
     )
 }
