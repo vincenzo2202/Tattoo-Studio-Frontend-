@@ -1,15 +1,13 @@
-  
-  
   .card-appointment:hover {
     transform: scale(1.1);
     transition: 1s;
   }
-  
-  .photo { 
+
+  .photo {
     width: 10em;
   }
-  
-  .card-appointment  {
+
+  .card-appointment {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -25,60 +23,65 @@
     padding-right: 2em;
     padding-left: 2em;
   }
-  
-  .card-appointment-right {
-    display: flex; 
+
+  .card-appointment-board {
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    transition-duration: 2s;   
+    flex-direction: row;
+    transition-duration: 2s;
   }
-  
+   
+  .center,
+  .left,
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 13em;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0.2em;  
+  }
+
+  .left{
+    margin-left: 2em;
+  }
+
+
   .card-appointment img {
     border-radius: 10%;
     width: 60%;
     margin-top: 1.25em;
   }
-  
-  .date-category {
-    width: 15em;
-    display: flex;
-    justify-content: space-between;
-    margin-right: 6em;
+
+  .desc-col{
+    margin-top: 1em;
+    font-size: 1.5em;
   }
 
   .status,
   .client_name,
-  .client_email, 
+  .client_email,
   .date,
   .shift,
   .service {
     margin-right: 3em;
   }
-  
+
   .button-spoiler {
     width: 15em;
   }
-  
+
   .tattoo-artist-card-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+  } 
 
-  
-/* .linkButtonDesign{
-    width: 5em;
-    height: 2em;
-    background-color: bisque;
-    border: 0.2em solid black;
-    border-radius: 0.7em;
-    color: black; 
-    cursor: pointer; 
-} */
-
-.button-update-appointment{ 
-    cursor:pointer;
+  .button-update-appointment {
+    cursor: pointer;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -86,14 +89,12 @@
     width: 3em;
     margin-bottom: 2em;
   }
-  
-  .button-update-appointment img{ 
-    cursor:pointer;
+
+  .button-update-appointment img {
+    cursor: pointer;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 3em;
     width: 3em;
   }
-
- 
