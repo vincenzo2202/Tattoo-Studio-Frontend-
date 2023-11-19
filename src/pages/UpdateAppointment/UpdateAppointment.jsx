@@ -137,10 +137,11 @@ export const UpdateAppointment = () => {
     return (
         <div className="appointment-body">
 
-            <div className="input-card">
-
+            <div className="input-card-update-appointment">
+                <div className="title-update">Update Appointment</div>
+                <div className="inputs-update-appointment-container"> 
                 <CustomInput
-                    design={"inputDesign"}
+                    design={"date-appointment"}
                     type={"date"}
                     name={"date"}
                     placeholder={"YYYY-MM-DD"}
@@ -150,7 +151,7 @@ export const UpdateAppointment = () => {
                 <div className='errorMsg'>{appointmentError.dateError}</div>
 
                 <ShiftToggle
-                    design={"inputDesign"}
+                    design={"shift-appointment"}
                     selectedShift={appointment.shift}
                     onShiftChange={(value) =>
                         setAppointment((prevState) => ({ ...prevState, shift: value }))
@@ -189,6 +190,8 @@ export const UpdateAppointment = () => {
                         }
                     </select>
                 } 
+                </div>
+
 
                 <div className='animated-button' onClick={Update}>Update</div>
 
