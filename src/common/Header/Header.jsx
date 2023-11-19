@@ -13,11 +13,12 @@ export const Header = () => {
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
     const [decodedToken, setDecodedToken] = useState(null);
+    const [tokenExpired, setTokenExpired] = useState(false);
 
     useEffect(() => {
         try {
             const decoded = jwtDecode(rdxToken);
-            setDecodedToken(decoded);
+            setDecodedToken(decoded); 
         } catch (error) {
             console.error("Error decoding token:", error);
         }
@@ -26,9 +27,35 @@ export const Header = () => {
  
     const logOutMe = () => {
         dispatch(logout())
-        Navigate("/")
-
+        Navigate("/") 
     }
+
+    // probar si eso funcion-------------------
+
+    useEffect(() => { 
+        const verificarExpiracionToken = () => {
+          if (rdxToken) {
+            try {  
+     
+              if (decodedToken.exp < Math.floor(Date.now() / 1000)) { 
+                setTokenExpired(true); 
+                dispatch(logout())
+                Navigate("/") 
+
+              } else { 
+                setTokenExpired(false);
+              }
+            } catch (error) {
+              console.error('Error al decodificar el token:', error); 
+            }
+          }
+        };
+     
+        verificarExpiracionToken();
+      }, [rdxToken]);
+
+
+//  ----------------------------------
 
     return (
         <div className='button-container'>
@@ -50,7 +77,7 @@ export const Header = () => {
             />
 
             {
-                rdxToken
+                rdxToken && tokenExpired == false
                     ? (
                         <>
                             <LinkButton

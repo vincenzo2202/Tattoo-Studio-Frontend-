@@ -19,7 +19,8 @@
   flex-direction: column;
   font-size: 1em;
   width: 18em;
-  height: 20em;
+  height: auto;
+ padding-bottom: 3em;
   border-radius: 2em;
   background: #212121;
   box-shadow: 15px 15px 30px rgb(25, 25, 25),

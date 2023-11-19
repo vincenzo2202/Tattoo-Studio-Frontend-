@@ -51,6 +51,8 @@ export const GetAllUsers = () => {
 
     return (
         <div className="users-body">
+
+            <div className="pagination-all-users">  
             <Pagination
                 ClassPage={"previus"}
                 text={"previus"}
@@ -62,6 +64,8 @@ export const GetAllUsers = () => {
                 text={"next"}
                 paginationChanger={() => up()}
             />
+            </div>
+            <div className="container-all-users">
             {
                 users.length > 0
                     ? (<div className='users-Roster'>
@@ -102,6 +106,7 @@ export const GetAllUsers = () => {
                         <div>Loading</div>
                     )
             }
+            </div>
         </div>
     )
 }

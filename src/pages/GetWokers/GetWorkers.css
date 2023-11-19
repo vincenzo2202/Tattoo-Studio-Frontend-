@@ -31,4 +31,8 @@
     position: absolute;
     top: 6.5em;
 }
- 
+
+.worker{
+    background-size: cover;
+  }
+  
