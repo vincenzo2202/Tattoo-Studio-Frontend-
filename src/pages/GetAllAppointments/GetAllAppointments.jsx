@@ -18,14 +18,14 @@ export const GetAllAppointments = () => {
     const dispatch = useDispatch();
 
     const [appointments, setAppointments] = useState([])
-    const [page, setPage] = useState(1) 
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
         if (rdxToken) {
             const decoded = jwtDecode(rdxToken);
             if (decoded.role == "super_admin") {
                 const pageString = page.toString()
-                getAllAppointment(rdxToken,pageString)
+                getAllAppointment(rdxToken, pageString)
                     .then(
                         response => {
                             if (Array.isArray(response.data.data)) {
@@ -58,22 +58,24 @@ export const GetAllAppointments = () => {
     }
 
     return (
-        <div className="appointments-body">
-            <Pagination
-                ClassPage={"previus"}
-                text={"previus"}
-                paginationChanger={() => down()}
-            />
-            <Pagination
-                ClassPage={"next"}
-                text={"next"}
-                paginationChanger={() => up()}
-            />
+        <div className="getAllAppointments-body">
+            <div className="pagination-appointments">
+                <Pagination
+                    ClassPage={"previus"}
+                    text={"previus"}
+                    paginationChanger={() => down()}
+                />
+                <Pagination
+                    ClassPage={"next"}
+                    text={"next"}
+                    paginationChanger={() => up()}
+                />
+            </div>
             {
                 appointments.length > 0
                     ? (<div className='appointments-Roster'>
 
-                        <div className='create-appointment-button'>
+                        <div className='create-appointment-admin-button'>
                             <LinkButton
                                 path={"/createAppointment"}
                                 title={"Create"}
@@ -88,22 +90,22 @@ export const GetAllAppointments = () => {
                                     appointment.status = "done"
                                 }
 
-                                return (
-                                    <CardsAppointments
-                                        appointmentId={appointment.id}
-                                        nameProduct={appointment.name}
-                                        imageProduct={appointment.image}
-                                        categoryProduct={appointment.category}
-                                        emailWorker={appointment.worker_email}
-                                        nameWorker={appointment.worker_name}
-                                        date={appointment.date}
-                                        shift={appointment.shift}
-                                        price={appointment.price}
-                                        client_email={appointment.user_email}
-                                        client_name={appointment.user_name}
-                                        status={appointment.status}
-                                        emit={() => rdxIdToUpdate(appointment.id)}
-                                    />
+                                return ( 
+                                        <CardsAppointments
+                                            appointmentId={appointment.id}
+                                            nameProduct={appointment.name}
+                                            imageProduct={appointment.image}
+                                            categoryProduct={appointment.category}
+                                            emailWorker={appointment.worker_email}
+                                            nameWorker={appointment.worker_name}
+                                            date={appointment.date}
+                                            shift={appointment.shift}
+                                            price={appointment.price}
+                                            client_email={appointment.user_email}
+                                            client_name={appointment.username}
+                                            status={appointment.status}
+                                            emit={() => rdxIdToUpdate(appointment.id)}
+                                        /> 
                                 )
                             })
                         }

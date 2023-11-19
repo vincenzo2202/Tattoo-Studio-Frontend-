@@ -76,6 +76,7 @@
 
   .desc-row{
     margin-right: 1em;
+    margin-left: 2em;
     font-size: 1.2em;
   }
 
@@ -91,8 +92,8 @@
   .button-spoiler {
     width: 7em;
     display: flex;
-    position:initial;
-    left: 8em;
+    position:relative;
+    left: 1em;
     margin-right:1em;
 
   }
@@ -127,6 +128,9 @@
     justify-content: flex-start;
     align-self: start;
     height: 0.5em;
+    position: relative;
+    right: 3.5em;
+
   }
 
   
