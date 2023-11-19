@@ -42,7 +42,7 @@ This project is a website for a tattoo shop, developed using React for the front
 1.  <strong>Tattoo Artists' Portfolios:</strong><br>
 Users can explore the profiles and portfolios of different tattoo artists. Each tattoo artist has a dedicated page showcasing a selection of their previous works.
 
-<br><div style="text-align: center;"><img src= "./src/assets/tatuadores2.gif" width="600"/></div><br>
+<div style="text-align: center;"><img src= "./src/assets/tatuadores2.gif" width="600"/></div>
 
 2. <strong>Appointment Management: </strong><br>
 Users can schedule new appointments with their preferred tattoo artists. They also have the ability to view, update, and cancel existing appointments for better management of their schedule.
@@ -56,12 +56,12 @@ The login page is essential for user authentication. Here, tattoo artists and Su
 5. <strong>Profile Update View:</strong><br>
 On this page, users will be able to update the information on their profiles. Fields will be provided to enter details such as name, address, and any other relevant information. Additionally, it may include options to upload a new profile picture. Upon submitting the form, the changes will be reflected in the user's profile.
 
-<br><div style="text-align: center;"><img src= "./src/assets/getallappointments.png" width="600"/></div><br>
+<div style="text-align: center;"><img src= "./src/assets/getallappointments.png" width="600"/></div>
 
 6. <strong>Appointment Creation View:</strong><br>
 In the appointment creation view, users will be able to select an available tattoo artist, choose a date and time for the appointment, and provide additional details if necessary. There will be a form that includes fields for selecting the tattoo artist, desired date and time, as well as an area for additional comments. Upon submitting the form, the new appointment will be scheduled and reflected in the user's and the corresponding tattoo artist's calendar.
 
-<br><div style="text-align: center;"><img src= "./src/assets/tatuadores3.gif" width="600"/></div><br>
+<div style="text-align: center;"><img src= "./src/assets/tatuadores3.gif" width="600"/></div>
 
 7. <strong>Appointment Update View</strong><br>
 The appointment update view will allow users to modify details of existing appointments. All scheduled appointments for the user will be displayed, and they can select the appointment they want to modify. There will be editable fields to adjust the date, time, and other relevant details. Additionally, they can cancel the appointment if necessary. Upon submitting the changes, the appointment will be updated in the system and reflected in the relevant calendars.
