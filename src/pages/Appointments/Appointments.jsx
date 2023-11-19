@@ -18,12 +18,10 @@ export const Appointments = () => {
     const rdxToken = useSelector(selectToken);
     const dispatch = useDispatch();
 
-
     const [appointment, setAppointments] = useState([]);
     const [page, setPage] = useState(1)
 
     useEffect(() => {
-
         if (rdxToken) {
             const pageString = page.toString()
             appointmentsUsers(rdxToken, pageString)
@@ -66,7 +64,6 @@ export const Appointments = () => {
         }
     }
 
-
     return (
         <div className="appointments-body">
 
@@ -93,7 +90,6 @@ export const Appointments = () => {
             {
                 appointment
                     ? (<div className='appointments-Roster'>
- 
 
                         {
                             appointment.map(appointment => {
@@ -115,14 +111,12 @@ export const Appointments = () => {
                             })
                         }
 
-
                     </div>
                     )
                     : (
                         <div>Loading...</div>
                     )
             }
-
         </div>
     )
 }

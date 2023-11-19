@@ -5,15 +5,12 @@ import { validator } from "../../services/Validations";
 import { updateUser } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 
-//Rdx
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 
 export const UpdateProfile = () => {
-
     const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
-
 
     const [credentials, setCredentials] = useState({
         full_name: "",
@@ -85,7 +82,6 @@ export const UpdateProfile = () => {
 
     return (
         <div className="register-body">
-
             <div className="input-card-update ">
                 <div className="title-update">Update Profile</div>
                 <div className="inputs-update-container">
@@ -127,7 +123,6 @@ export const UpdateProfile = () => {
                     <div className='errorMsg'>{credentialsError.photoError}</div>
                 </div>
                 <div className='animated-button' onClick={update}>Update</div>
-
                 <p>{message}</p>
             </div>
         </div>

@@ -15,7 +15,6 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 
 export const Login = () => {
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
@@ -102,9 +101,7 @@ export const Login = () => {
                     <div className='errorMsg'>{credentialsError.passwordError}</div>
                 </div>
                 <div className='animated-button ' onClick={logMe}>Log in</div>
-
                 <div > {message}</div>
-
             </div>
         </div>
     )

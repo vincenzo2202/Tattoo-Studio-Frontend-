@@ -1,7 +1,7 @@
 import React from 'react';
 import './ShiftToggle.css';
 
-const ShiftToggle = ({ selectedShift, onShiftChange  }) => {
+const ShiftToggle = ({ selectedShift, onShiftChange }) => {
     const shiftOptions = ["morning", "afternoon"];
 
     return (
@@ -19,7 +19,7 @@ const ShiftToggle = ({ selectedShift, onShiftChange  }) => {
                         {option.charAt(0).toUpperCase() + option.slice(1)}
                     </option>
                 ))}
-            </select> 
+            </select>
         </div>
     );
 };

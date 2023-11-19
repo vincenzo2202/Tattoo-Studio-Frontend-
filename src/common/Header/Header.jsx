@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, selectToken } from "../../pages/userSlice";
 
 export const Header = () => {
-
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
     const [decodedToken, setDecodedToken] = useState(null);
@@ -22,7 +21,6 @@ export const Header = () => {
         } catch (error) {
             console.error("Error decoding token:", error);
         }
-
     }, [rdxToken]);
  
     const logOutMe = () => {
@@ -34,14 +32,12 @@ export const Header = () => {
 
     useEffect(() => { 
         const verificarExpiracionToken = () => {
-          if (rdxToken) {
+          if (rdxToken && decodedToken) {
             try {  
-     
               if (decodedToken.exp < Math.floor(Date.now() / 1000)) { 
                 setTokenExpired(true); 
                 dispatch(logout())
                 Navigate("/") 
-
               } else { 
                 setTokenExpired(false);
               }
@@ -50,13 +46,9 @@ export const Header = () => {
             }
           }
         };
-     
         verificarExpiracionToken();
-      }, [rdxToken]);
-
-
+      }, []);
 //  ----------------------------------
-
     return (
         <div className='button-container'>
             <LinkButton
@@ -64,7 +56,6 @@ export const Header = () => {
                 path={"/home"}
                 title={"Home"}
             />
-
             <LinkButton
                 className={"header-button"}
                 path={"/workers"}
@@ -75,7 +66,6 @@ export const Header = () => {
                 path={"/portfolio"}
                 title={"Portfolio"}
             />
-
             {
                 rdxToken && tokenExpired == false
                     ? (
@@ -85,13 +75,11 @@ export const Header = () => {
                                 path={"/profile"}
                                 title={"Profile"}
                             />
-
                             <LinkButton
                                 className={"header-button"}
                                 path={"/appointments"}
                                 title={"Appointments"}
                             />
-
                             <div className='header-button' onClick={logOutMe}>
                                 <LinkButton
                                     classButton={"linkButtonDesign"}
@@ -115,7 +103,6 @@ export const Header = () => {
                                         />
                                     </>
                                 )}
-
                         </>
                     ) :
                     (
@@ -130,12 +117,9 @@ export const Header = () => {
                                 path={"/register"}
                                 title={"Register"}
                             />
-
                         </>
                     )
             }
-
-
         </div >
     );
 };

@@ -5,18 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { validator } from "../../services/Validations";
 import { logUser, registerUser } from "../../services/apiCalls";
 
-
-//Importo Rdx
-
 import { useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
 import { login } from "../userSlice";
 
-//Rdx
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 
 export const Register = () => {
-
     const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
     const dispatch = useDispatch();
@@ -45,7 +40,6 @@ export const Register = () => {
 
     const [message, setMessage] = useState("");
 
-
     const functionHandler = (e) => {
         setCredentials((prevState) => ({
             ...prevState,
@@ -54,11 +48,8 @@ export const Register = () => {
     };
 
     const errorCheck = (e) => {
-
         let error = "";
-
         error = validator(e.target.name, e.target.value);
-
         setCredentialsError((prevState) => ({
             ...prevState,
             [e.target.name + 'Error']: error,
@@ -115,7 +106,6 @@ export const Register = () => {
 
     return (
         <div className="register-body">
-
             <div className="input-card-register">
                 <div className="title-login">Login</div>
                 <div className="inputs-register-container">
@@ -165,9 +155,7 @@ export const Register = () => {
                     />
                     <div className='errorMsg'>{credentialsError.photoError}</div>
                 </div>
-
                 <div className='animated-button' onClick={SignUp}>Sign up</div>
-
                 <p>{message}</p>
             </div>
         </div>

@@ -4,13 +4,8 @@ import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 
-
-//REDUX
-
 import { Provider } from "react-redux";
 import store from "./app/store.js";
-
-//REDUX PERSISTENCE
 
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";

@@ -1,4 +1,3 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 
 export const userSlice = createSlice({
@@ -13,9 +12,7 @@ export const userSlice = createSlice({
       logout: (state, action) => {
         state.token = null
       } 
-      
     }
-    
 }); 
 
 export const selectToken = (state) => state.user.token;

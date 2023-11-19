@@ -1,4 +1,3 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 
 export const appointmentSlice = createSlice({
@@ -9,10 +8,8 @@ export const appointmentSlice = createSlice({
     reducers: {
         idToUpdate: (state, action) => {
        state.idToUpdate = action.payload
-      } 
-      
+      }  
     }
-    
 }); 
  
 export const selectIdToUpdate = (state) => state.appointment.idToUpdate;  

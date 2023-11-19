@@ -21,17 +21,18 @@ export const Profile = () => {
         photo: ""
     });
 
-    const [stop , setStop] = useState(false)
+    const [stop, setStop] = useState(false)
 
     useEffect(() => {
         if (rdxToken) {
             getProfile(rdxToken)
                 .then((response) => {
-                    if(stop == false){
+                    if (stop == false) {
 
-                    setUser(response.data.data);
-                    setStop(true)
-         } })
+                        setUser(response.data.data);
+                        setStop(true)
+                    }
+                })
                 .catch((error) => {
                     console.log(error);
                 });
@@ -62,9 +63,6 @@ export const Profile = () => {
                     ) : (
                         <div>Loading...</div>
                     )}
-
-
         </div>
     );
-
 };

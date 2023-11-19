@@ -21,17 +21,13 @@ export const CreateAppointment = () => {
         shift: "",
         email: "",
         id: ""
-
     });
     const [appointmentError, setAppointmentError] = useState({
         dateError: "",
         shiftError: "",
         emailError: "",
         idError: ""
-
     });
-
-
 
     const [message, setMessage] = useState("");
 
@@ -41,7 +37,6 @@ export const CreateAppointment = () => {
         }
     }, []);
 
-
     const functionHandler = (e) => {
         setAppointment((prevState) => ({
             ...prevState,
@@ -50,9 +45,7 @@ export const CreateAppointment = () => {
     };
 
     const errorCheck = (e) => {
-
         let error = "";
-
         error = validator(e.target.name, e.target.value);
 
         setAppointmentError((prevState) => ({
@@ -88,18 +81,15 @@ export const CreateAppointment = () => {
                 .catch(error => {
                     console.log(error);
                 });
-
         } else {
             setMessage("All fields are required")
         }
     }
 
-
     const [workers, setWorkers] = useState([]);
     const [gallery, setgallery] = useState("");
 
     useEffect(() => {
-
         if (workers.length === 0) {
             getWorkers()
                 .then(
@@ -114,7 +104,6 @@ export const CreateAppointment = () => {
     }, [workers]);
 
     useEffect(() => {
-
         if (gallery.length === 0) {
             getPortfolio()
                 .then(
@@ -130,7 +119,6 @@ export const CreateAppointment = () => {
 
     return (
         <div className="appointment-body">
-
             <div className="input-card-create">
                 <div className="title-create">Book Now</div>
                 <div className="inputs-create-container">
@@ -150,7 +138,6 @@ export const CreateAppointment = () => {
                         onShiftChange={(value) =>
                             setAppointment((prevState) => ({ ...prevState, shift: value }))
                         }
-
                     />
                     <div className='errorMsg'>{appointmentError.dateError}</div>
                     <div className="worker-dropdown">
@@ -173,7 +160,6 @@ export const CreateAppointment = () => {
                     <div className="portfolio-dropdown"></div>
                     {
                         gallery.length > 0 &&
-
                         <select className="tattoos" name="id" onChange={functionHandler}>
                             <option>Select a service</option>
                             {
@@ -188,9 +174,7 @@ export const CreateAppointment = () => {
                         </select>
                     }
                 </div>
-
                 <div className='animated-button' onClick={Create}>Create</div>
-
                 <p>{message}</p>
             </div>
         </div>

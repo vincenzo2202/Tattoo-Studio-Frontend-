@@ -20,7 +20,6 @@ export const GetWorkers = () => {
                 }
                 })
                 .catch(error => console.log(error))
-        
     }, [page]) 
 
     const up = () => {
@@ -35,14 +34,11 @@ export const GetWorkers = () => {
 
     return (
         <div className="workers-body background-image ">
-
             <div className="pagination-workers">
-
              <Pagination
                 ClassPage={"button"}
                 text={"previus"}
                 paginationChanger={() => down()}
-
             />
             <Pagination
                 ClassPage={"button"}
@@ -50,7 +46,6 @@ export const GetWorkers = () => {
                 paginationChanger={() => up()}
             />
             </div>
-                
             {
                 workers.length > 0
                     ? (<div className='worker-Roster'>

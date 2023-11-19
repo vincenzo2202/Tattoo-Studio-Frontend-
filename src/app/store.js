@@ -6,7 +6,6 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import appointmentSlice from '../pages/appointmentSlice';
 
-
 const reducers = combineReducers({
     user: userSlice, 
     appointment: appointmentSlice, 

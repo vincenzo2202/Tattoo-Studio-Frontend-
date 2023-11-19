@@ -13,15 +13,12 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
 
     return (
         <div className="card-appointment" key={appointmentId}>
-
             <button className="button-spoiler" onClick={toggleCollapse}>
                 {collapsed ? "Details" : "Hide"}
             </button>
             {!collapsed
-
                 ? (
                     <div className="card-appointment-board">
-                       
                         <div className="left picture">
                             <div className="nameProduct">{nameProduct}</div>
                             <img className="pic" src={imageProduct} alt={nameProduct} />
@@ -29,14 +26,10 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                         <div className="center">
                             <div className="desc-col">Worker: </div>
                             <div className="nameWorker"> {nameWorker}</div>
-
                             <div className="desc-col">Price: </div>
-
                             <div className="priceProduct">{price} €</div>
                             <div className="desc-col">Email: </div>
-
                             <div className="email"> {emailWorker}</div>
-
                         </div>
                         <div className="right">
                             <div className="desc-col">Date: </div>
@@ -48,7 +41,6 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                             <div className="status"> {status}</div>
                             <div className="client_name">{client_name} </div>
                             <div className="client_email">{client_email} </div>
-
                         </div >
                         <div className="buttons-card-appointments">
                             <LinkButton
@@ -69,7 +61,6 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                         
                     </div>
                 )
-
                 : (
                     <div className="date-category">
                         <div className="desc-row">Date: </div>
@@ -82,7 +73,6 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                         <div className="client_email">{client_email} </div>
                     </div>
                 )
-
             }
         </div>
     );

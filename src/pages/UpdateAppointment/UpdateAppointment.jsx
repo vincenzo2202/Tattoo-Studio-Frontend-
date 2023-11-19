@@ -6,13 +6,11 @@ import { validator } from "../../services/Validations";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
-//Rdx
 import { useSelector } from "react-redux";
 import { selectIdToUpdate } from "../appointmentSlice";
 import { selectToken } from "../userSlice";
 
 export const UpdateAppointment = () => {
-
     const rdxIdtoUpdate = useSelector(selectIdToUpdate)
     const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
@@ -23,7 +21,6 @@ export const UpdateAppointment = () => {
         shift: "",
         email: "",
         portfolioId: "",
-
     });
 
     const [appointmentError, setAppointmentError] = useState({
@@ -32,7 +29,6 @@ export const UpdateAppointment = () => {
         shiftError: "",
         emailError: "",
         portfolioIdError: "",
-
     });
 
     const [stop, setStop] = useState(false)
@@ -58,11 +54,8 @@ export const UpdateAppointment = () => {
     };
 
     const errorCheck = (e) => {
-
         let error = "";
-
         error = validator(e.target.name, e.target.value);
-
         setAppointmentError((prevState) => ({
             ...prevState,
             [e.target.name + 'Error']: error,
@@ -105,7 +98,6 @@ export const UpdateAppointment = () => {
     const [gallery, setgallery] = useState("");
 
     useEffect(() => {
-
         if (workers.length === 0) {
             getWorkers()
                 .then(
@@ -120,7 +112,6 @@ export const UpdateAppointment = () => {
     }, [workers]);
 
     useEffect(() => {
-
         if (gallery.length === 0) {
             getPortfolio()
                 .then(
@@ -136,7 +127,6 @@ export const UpdateAppointment = () => {
 
     return (
         <div className="appointment-body">
-
             <div className="input-card-update-appointment">
                 <div className="title-update">Update Appointment</div>
                 <div className="inputs-update-appointment-container"> 
@@ -149,7 +139,6 @@ export const UpdateAppointment = () => {
                     functionBlur={errorCheck}
                 />
                 <div className='errorMsg'>{appointmentError.dateError}</div>
-
                 <ShiftToggle
                     design={"shift-appointment"}
                     selectedShift={appointment.shift}
@@ -158,7 +147,6 @@ export const UpdateAppointment = () => {
                     }
                 />
                 <div className='errorMsg'>{appointmentError.dateError}</div>
-
                 {
                     workers.length > 0 &&
                     <select className="dropdown" name="email" onChange={functionHandler}>
@@ -191,10 +179,7 @@ export const UpdateAppointment = () => {
                     </select>
                 } 
                 </div>
-
-
                 <div className='animated-button' onClick={Update}>Update</div>
-
                 <p>{message}</p>
             </div>
         </div>
