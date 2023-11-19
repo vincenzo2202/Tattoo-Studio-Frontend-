@@ -37,6 +37,9 @@
 
 
 .animated-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
     --clr-font-main: hsla(0 0% 20% / 100);
     --btn-bg-1: hsla(194 100% 69% / 1);
     --btn-bg-2: hsla(217 100% 56% / 1);

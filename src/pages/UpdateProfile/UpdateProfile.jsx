@@ -92,7 +92,7 @@ export const UpdateProfile = () => {
                     design={"inputDesign"}
                     type={"name"}
                     name={"full_name"}
-                    placeholder={"David Ochando"}
+                    placeholder={"Full Name"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
@@ -101,7 +101,7 @@ export const UpdateProfile = () => {
                     design={"inputDesign"}
                     type={"password"}
                     name={"password"}
-                    placeholder={"Aa1234@"}
+                    placeholder={"Password"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
@@ -110,7 +110,7 @@ export const UpdateProfile = () => {
                     design={"inputDesign"}
                     type={"number"}
                     name={"phone_number"}
-                    placeholder={"666666666"}
+                    placeholder={"Phone Number"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
@@ -124,7 +124,7 @@ export const UpdateProfile = () => {
                     functionBlur={errorCheck}
                 />
                 <div className='errorMsg'>{credentialsError.photoError}</div>
-                <div className='class-button' onClick={update}>Update</div>
+                <div className='animated-button' onClick={update}>Update</div>
 
                 <p>{message}</p>
             </div>
