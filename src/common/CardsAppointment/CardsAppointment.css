@@ -1,27 +1,23 @@
-  .card-appointment:hover {
-    transform: scale(1.1);
-    transition: 1s;
-  }
+  
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Dancing+Script&family=Young+Serif&display=swap');
 
-  .photo {
-    width: 10em;
-  }
-
+  
   .card-appointment {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 80%;
+    height: auto;
     color: rgb(255, 255, 255);
     text-align: center;
-    padding: 1em 0em 1em 0em;
-    border-radius: 0.5em;
-    background-color: rgb(60, 63, 77);
-    margin: 3em;
-    transition: 1s;
+    padding: 2em 1em 2em 1em;
+    border-radius: 2em;
+    background-color: rgb(41, 41, 43);
+    margin: 3em; 
     padding-right: 2em;
     padding-left: 2em;
+    font-family: 'Cinzel', serif;
   }
 
   .card-appointment-board {
@@ -31,22 +27,38 @@
     flex-direction: row;
     transition-duration: 2s;
   }
+
+  .date-category{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+  }
    
-  .center,
-  .left,
+  .center, 
   .right {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-direction: column;
-    width: 13em;
+    flex-direction: column; 
     display: flex;
-    justify-content: space-between;
-    margin-right: 0.2em;  
+    justify-content: space-between; 
+    margin-right:5em ;
   }
 
   .left{
     margin-left: 2em;
+    height: 14em;
+    width: 19em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5em;
+  }
+  
+  .nameProduct{
+    font-size: 1.3em;
+    margin-right: 1em;
   }
 
 
@@ -61,6 +73,11 @@
     font-size: 1.5em;
   }
 
+  .desc-row{
+    margin-right: 1em;
+    font-size: 1.2em;
+  }
+
   .status,
   .client_name,
   .client_email,
@@ -71,7 +88,12 @@
   }
 
   .button-spoiler {
-    width: 15em;
+    width: 7em;
+    display: flex;
+    position:initial;
+    left: 8em;
+    margin-right: 2em;
+
   }
 
   .tattoo-artist-card-container {
@@ -95,6 +117,17 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 3em;
-    width: 3em;
+    height: 2em;
+    width: 2em;
   }
+
+  .buttons-card-appointments{
+    display: flex;
+    justify-content: flex-start;
+    align-self: start;
+    height: 0.5em;
+  }
+
+  
+
+  

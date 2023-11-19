@@ -88,15 +88,12 @@ export const Appointments = () => {
                     text={"next"}
                     paginationChanger={() => up()}
                 />
-            </div>
-
-
+            </div> 
 
             {
                 appointment
                     ? (<div className='appointments-Roster'>
-
-
+ 
 
                         {
                             appointment.map(appointment => {

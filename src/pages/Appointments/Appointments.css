@@ -1,32 +1,37 @@
-.appointments-body{
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Dancing+Script&family=Young+Serif&display=swap');
+
+
+
+
+.appointments-body {
     height: 100vh;
     width: 100vw;
     background-color: rgb(63, 95, 95);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image:url(../../assets/background.jpg);
+    background-image: url(../../assets/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% 100%;   
+    background-size: 100% 100%;
     z-index: -100;
 }
 
 
-.appointments-Roster{
+.appointments-Roster {
     height: 84vh;
-    width: 100vw; 
+    width: 100vw;
 
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    align-items: center; 
-position: absolute;
-margin-top: 14em;
- 
+    align-items: center;
+    position: absolute;
+    margin-top: 14em;
+
 }
 
 
-.pagination-appointments{
+.pagination-appointments {
     width: 100vw;
     height: 5em;
     display: flex;
@@ -34,7 +39,7 @@ margin-top: 14em;
     align-items: center;
     position: absolute;
     top: 7em;
-} 
+}
 
 .create-appointment-button {
     width: 6em;
@@ -50,13 +55,14 @@ margin-top: 14em;
     font-family: inherit;
     font-size: 17px;
     padding: 0.6em 1.5em;
-   }
-   
-   .create-appointment-button:hover {
+    font-family: 'Cinzel', serif;
+}
+
+.create-appointment-button:hover {
     background-position: right center;
-    background-size: 200% auto; 
-    -moz-animation: pulse512 1.5s infinite;   
-    animation: pulse512 1.5s infinite;       
+    background-size: 200% auto;
+    -moz-animation: pulse512 1.5s infinite;
+    animation: pulse512 1.5s infinite;
 }
 
 @keyframes pulse512 {

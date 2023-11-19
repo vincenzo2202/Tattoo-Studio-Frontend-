@@ -1,8 +1,8 @@
 import './LinkDelete.css'
 
-export const LinkDelete = ({ deleted }) => {
+export const LinkDelete = ({ deleted  ,title}) => {
 
     return (
-        <div className="delete" onClick={() => deleted()}>Remove</div>
+        <div   onClick={() => deleted()}>{title}</div>
     )
 }
