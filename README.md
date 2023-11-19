@@ -14,8 +14,6 @@ Developed as part of the fifth project in the Full Stack Developer Bootcamp at G
     <img src="./src/assets/GeeksHubs-Academy-Card.png" style="max-height: 120px; width: 600;" />
 </div>
 
-
-
 <br>
 
 ## Contenido
@@ -32,9 +30,7 @@ Developed as part of the fifth project in the Full Stack Developer Bootcamp at G
 - [Author](#author) 
 - [Contact](#contact) 
 
- 
-
-<p align="center">_______________________________________________</p>
+ <p align="center">_______________________________________________</p>
 
 ## Introduction
 
@@ -77,7 +73,6 @@ The appointment update view will allow users to modify details of existing appoi
     git clone https://github.com/vincenzo2202/Tattoo-Studio-Frontend-
     cd project-5-frontend-tattoo-studio
     ```
-
 
 2. Install Frontend Dependencies:
     ```
@@ -122,7 +117,6 @@ The application will be available at http://localhost:5173/ for the frontend and
 
 Enjoy exploring the tattoo shop application!"
 
-
 ## Contributions
 Contributions are welcome. If you have improvement suggestions or find issues, feel free to open an issue or submit a pull request.
 
@@ -147,7 +141,6 @@ You can contribute in two ways:
 
  Thank you for your support!
  
-  
 ## 🚧 Problems and Possible Solutions💡
 - Responsive Design Issues in Appointments and Get All Appointments Cards
 
@@ -157,7 +150,6 @@ You can contribute in two ways:
 
     <strong>Solution: </strong> Create a new endpoint to retrieve the complete list of workers without pagination to resolve the conflict in the dropdown.
 - The header is not responsive, so it doesn't adapt to the mobile view.
-
 
 ## Future Improvements
 - Worker view where they can manage and visualize their appointments.

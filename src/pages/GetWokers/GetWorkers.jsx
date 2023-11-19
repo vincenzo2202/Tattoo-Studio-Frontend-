@@ -34,7 +34,7 @@ export const GetWorkers = () => {
     }
 
     return (
-        <div className="workers-body">
+        <div className="workers-body background-image ">
 
             <div className="pagination-workers">
 
