@@ -122,7 +122,7 @@ export const Register = () => {
                     design={"inputDesign"}
                     type={"name"}
                     name={"full_name"}
-                    placeholder={"David Ochando"}
+                    placeholder={"Full name"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
@@ -140,7 +140,7 @@ export const Register = () => {
                     design={"inputDesign"}
                     type={"password"}
                     name={"password"}
-                    placeholder={"Aa1234@"}
+                    placeholder={"Password"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
@@ -149,7 +149,7 @@ export const Register = () => {
                     design={"inputDesign"}
                     type={"number"}
                     name={"phone_number"}
-                    placeholder={"666666666"}
+                    placeholder={"Phone Number"}
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />

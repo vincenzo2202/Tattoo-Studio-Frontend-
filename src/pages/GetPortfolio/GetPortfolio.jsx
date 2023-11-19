@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./GetPortfolio.css"
 import { getPortfolio } from "../../services/apiCalls"; 
 import { CardPortfolio } from "../../common/CardPortfolio/CardPortfolio";
-import { Pagination } from "../../common/Pagination/Pagination";
-import { Rating } from "../../common/Rating/Rating";
+import { Pagination } from "../../common/Pagination/Pagination"; 
 
 export const GetPortfolio = () => {
 
