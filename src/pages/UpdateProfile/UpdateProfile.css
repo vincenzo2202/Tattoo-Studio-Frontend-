@@ -1,4 +1,54 @@
  
+.input-card-update {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1em;
+  width: 18em;
+  height: auto;
+  border-radius: 2em;
+  background: #212121;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25),
+    -15px -15px 30px rgb(60, 60, 60);
+}
+
+
+.inputs-update-container {
+  margin-top: 0.3em; 
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.title-update {
+  font-size: 1em;
+  color: white;
+  z-index: 100;
+  position: relative; 
+  font-family: 'Cinzel', serif; 
+  margin-top: 1.8em; 
+}
+.update-number,
+.update-email,
+.update-password, 
+.url-avatar { 
+  
+   text-align: center;
+  margin-top:1em ;
+  background: rgb(46, 45, 45);
+  border: none;
+  outline: none;
+  width: 15em; 
+  height: 2.3em;
+  font-size: 16px;
+  border-radius: 0.8em;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  color: #ffffff;
+}
 .animated-button {
     --clr-font-main: hsla(0 0% 20% / 100);
     --btn-bg-1: hsla(194 100% 69% / 1);

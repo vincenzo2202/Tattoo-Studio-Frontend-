@@ -59,7 +59,7 @@ export const Login = () => {
 
     const logMe = () => {
         if (credentials.password != "" &&
-            credentials.email != ""){
+            credentials.email != "") {
             logUser(credentials)
                 .then((response) => {
                     const { message, token } = response.data;
@@ -79,26 +79,28 @@ export const Login = () => {
 
     return (
         <div className="login-body">
-            <div className="input-card">
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"email"}
-                    name={"email"}
-                    placeholder={"user@gmail.com"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{credentialsError.emailError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"password"}
-                    name={"password"}
-                    placeholder={"Aa1234@"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{credentialsError.passwordError}</div>
-
+            <div className="input-card-login">
+                <div className="title-login">Login</div>
+                <div className="inputs-login-container">
+                    <CustomInput
+                        design={"inputDesign"}
+                        type={"email"}
+                        name={"email"}
+                        placeholder={"user@gmail.com"}
+                        functionProp={functionHandler}
+                        functionBlur={errorCheck}
+                    />
+                    <div className='errorMsg'>{credentialsError.emailError}</div>
+                    <CustomInput
+                        design={"inputDesign"}
+                        type={"password"}
+                        name={"password"}
+                        placeholder={"Aa1234@"}
+                        functionProp={functionHandler}
+                        functionBlur={errorCheck}
+                    />
+                    <div className='errorMsg'>{credentialsError.passwordError}</div>
+                </div>
                 <div className='animated-button ' onClick={logMe}>Log in</div>
 
                 <div > {message}</div>

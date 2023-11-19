@@ -11,7 +11,7 @@ import { selectToken } from "../userSlice";
 
 export const UpdateProfile = () => {
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const rdxToken = useSelector(selectToken);
 
 
@@ -65,7 +65,7 @@ export const UpdateProfile = () => {
                 ...credentials,
                 phone_number: parseInt(credentials.phone_number, 10),
                 photo: photoDefault(credentials.photo)
-            }; 
+            };
             updateUser(credentialsWithNumber, rdxToken)
                 .then((response) => {
                     console.log(response.data);
@@ -86,44 +86,46 @@ export const UpdateProfile = () => {
     return (
         <div className="register-body">
 
-            <div className="input-card">
-
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"name"}
-                    name={"full_name"}
-                    placeholder={"Full Name"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{credentialsError.full_nameError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"password"}
-                    name={"password"}
-                    placeholder={"Password"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{credentialsError.passwordError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"number"}
-                    name={"phone_number"}
-                    placeholder={"Phone Number"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{credentialsError.phone_numberError}</div>
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"text"}
-                    name={"photo"}
-                    placeholder={"URL photo"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{credentialsError.photoError}</div>
+            <div className="input-card-update ">
+                <div className="title-update">Update Profile</div>
+                <div className="inputs-update-container">
+                    <CustomInput
+                        design={"update-email"}
+                        type={"name"}
+                        name={"full_name"}
+                        placeholder={"Full Name"}
+                        functionProp={functionHandler}
+                        functionBlur={errorCheck}
+                    />
+                    <div className='errorMsg'>{credentialsError.full_nameError}</div>
+                    <CustomInput
+                        design={"update-password"}
+                        type={"password"}
+                        name={"password"}
+                        placeholder={"Password"}
+                        functionProp={functionHandler}
+                        functionBlur={errorCheck}
+                    />
+                    <div className='errorMsg'>{credentialsError.passwordError}</div>
+                    <CustomInput
+                        design={"update-number"}
+                        type={"number"}
+                        name={"phone_number"}
+                        placeholder={"Phone Number"}
+                        functionProp={functionHandler}
+                        functionBlur={errorCheck}
+                    />
+                    <div className='errorMsg'>{credentialsError.phone_numberError}</div>
+                    <CustomInput
+                        design={"url-avatar"}
+                        type={"text"}
+                        name={"photo"}
+                        placeholder={"URL photo"}
+                        functionProp={functionHandler}
+                        functionBlur={errorCheck}
+                    />
+                    <div className='errorMsg'>{credentialsError.photoError}</div>
+                </div>
                 <div className='animated-button' onClick={update}>Update</div>
 
                 <p>{message}</p>

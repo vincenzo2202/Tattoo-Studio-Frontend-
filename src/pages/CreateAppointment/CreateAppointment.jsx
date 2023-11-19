@@ -31,7 +31,7 @@ export const CreateAppointment = () => {
 
     });
 
-  
+
 
     const [message, setMessage] = useState("");
 
@@ -94,10 +94,10 @@ export const CreateAppointment = () => {
         }
     }
 
-    
+
     const [workers, setWorkers] = useState([]);
     const [gallery, setgallery] = useState("");
-    
+
     useEffect(() => {
 
         if (workers.length === 0) {
@@ -111,7 +111,7 @@ export const CreateAppointment = () => {
         } else {
             console.log("artists vale...", workers)
         }
-    }, [workers]); 
+    }, [workers]);
 
     useEffect(() => {
 
@@ -126,64 +126,68 @@ export const CreateAppointment = () => {
         } else {
             console.log(gallery)
         }
-    }, [gallery]); 
+    }, [gallery]);
 
     return (
         <div className="appointment-body">
 
-            <div className="input-card">
+            <div className="input-card-create">
+                <div className="title-create">Book Now</div>
+                <div className="inputs-create-container">
+                    <CustomInput
+                        design={"create-date"}
+                        type={"date"}
+                        name={"date"}
+                        placeholder={"YYYY-MM-DD"}
+                        functionProp={functionHandler}
+                        functionBlur={errorCheck}
+                    />
+                    <div className='errorMsg'>{appointmentError.dateError}</div>
 
+                    <ShiftToggle
+                        design={"shift-create"}
+                        selectedShift={appointment.shift}
+                        onShiftChange={(value) =>
+                            setAppointment((prevState) => ({ ...prevState, shift: value }))
+                        }
 
-                <CustomInput
-                    design={"inputDesign"}
-                    type={"date"}
-                    name={"date"}
-                    placeholder={"YYYY-MM-DD"}
-                    functionProp={functionHandler}
-                    functionBlur={errorCheck}
-                />
-                <div className='errorMsg'>{appointmentError.dateError}</div>
-
-                <ShiftToggle
-                    design={"inputDesign"}
-                    selectedShift={appointment.shift}
-                    onShiftChange={(value) =>
-                        setAppointment((prevState) => ({ ...prevState, shift: value }))
+                    />
+                    <div className='errorMsg'>{appointmentError.dateError}</div>
+                    <div className="worker-dropdown">
+                    {
+                        workers.length > 0 &&
+                        <select className="dropdown" name="email" onChange={functionHandler}>
+                            <option>Select a worker</option>
+                            {
+                                workers.map(
+                                    worker => {
+                                        return (
+                                            <option key={worker.id} value={worker.email}>{worker.full_name}</option>
+                                        )
+                                    }
+                                )
+                            }
+                        </select>
                     }
+                    </div>
+                    <div className="portfolio-dropdown"></div>
+                    {
+                        gallery.length > 0 &&
 
-                />
-                <div className='errorMsg'>{appointmentError.dateError}</div>
-                {
-                    workers.length > 0 &&
-                    <select className="dropdown" name="email" onChange={functionHandler}>
-                        <option>Select a worker</option>
-                        {
-                            workers.map(
-                                worker => {
-                                    return (
-                                        <option key={worker.id} value={worker.email}>{worker.full_name}</option>
-                                    )
-                                }
-                            )
-                        }
-                    </select>
-                }
-                {
-                    gallery.length > 0 &&
-
-                    <select className="tattoos" name="id" onChange={functionHandler}>
-                        <option>Select a service</option>
-                        {
-                            gallery.map(
-                                service => {
-                                    return (
-                                        <option key={service.id} value={service.id}>{service.name}</option>
-                                    )
-                                }
-                            )
-                        }
-                    </select>
-                }  
+                        <select className="tattoos" name="id" onChange={functionHandler}>
+                            <option>Select a service</option>
+                            {
+                                gallery.map(
+                                    service => {
+                                        return (
+                                            <option key={service.id} value={service.id}>{service.name}</option>
+                                        )
+                                    }
+                                )
+                            }
+                        </select>
+                    }
+                </div>
 
                 <div className='animated-button' onClick={Create}>Create</div>
 

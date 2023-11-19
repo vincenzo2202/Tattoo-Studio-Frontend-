@@ -1,32 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Dancing+Script&family=Young+Serif&display=swap');
+
+
+
 .register-body{
   height: 100vh;
   width: 100vw;
   background-color: rgb(63, 95, 95);
   display: flex;
   justify-content: center;
+  align-items: center;
   background-image:url(../../assets/background.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%; 
-  top: 0;
+  background-size: 100% 100%;  
   z-index: -100;
     
 }
 
-.input-card{ 
-
+.input-card-register{ 
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin: 2em;
-
-    width: 250px;
-    height: 300px;
+    flex-direction: column; 
+    font-size: 1em; 
+    width: 18em;
+    height: 28em; 
     border-radius: 30px;
-    background: #212121;
+    background: #212121; 
     box-shadow: 15px 15px 30px rgb(25, 25, 25),
                 -15px -15px 30px rgb(60, 60, 60);
+}
+
+.inputs-register-container{
+margin-top: 2em;
+}
+
+.title-login{
+  font-size: 1em;
+  color: white;
+  z-index: 100;
+  position: relative;
+  top: 1em;
+  font-family: 'Cinzel', serif;
 }
 
  
@@ -40,6 +56,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1em;
     --clr-font-main: hsla(0 0% 20% / 100);
     --btn-bg-1: hsla(194 100% 69% / 1);
     --btn-bg-2: hsla(217 100% 56% / 1);

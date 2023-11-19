@@ -7,7 +7,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 80%;
+    min-width: 50%;
+    max-width: 80%;
     height: auto;
     color: rgb(255, 255, 255);
     text-align: center;
@@ -92,7 +93,7 @@
     display: flex;
     position:initial;
     left: 8em;
-    margin-right: 2em;
+    margin-right:1em;
 
   }
 
