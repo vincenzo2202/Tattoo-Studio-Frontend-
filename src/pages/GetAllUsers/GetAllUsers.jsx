@@ -94,8 +94,6 @@ export const GetAllUsers = () => {
                                         email={users.email}
                                         role_id={users.role_id}
                                         is_active={users.is_active}
-
-
                                     />
                                 )
                             }
