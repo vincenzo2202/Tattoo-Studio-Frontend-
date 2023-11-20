@@ -12,116 +12,95 @@ export const Header = () => {
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
     const [decodedToken, setDecodedToken] = useState(null);
-    const [tokenExpired, setTokenExpired] = useState(false);
+    
 
     useEffect(() => {
         try {
             const decoded = jwtDecode(rdxToken);
-            setDecodedToken(decoded); 
+            setDecodedToken(decoded);
         } catch (error) {
             console.error("Error decoding token:", error);
         }
     }, [rdxToken]);
- 
+
     const logOutMe = () => {
         dispatch(logout())
-        Navigate("/") 
-    }
-
-    // probar si eso funcion-------------------
-
-    useEffect(() => { 
-        const verificarExpiracionToken = () => {
-          if (rdxToken && decodedToken) {
-            try {  
-              if (decodedToken.exp < Math.floor(Date.now() / 1000)) { 
-                setTokenExpired(true); 
-                dispatch(logout())
-                Navigate("/") 
-              } else { 
-                setTokenExpired(false);
-              }
-            } catch (error) {
-              console.error('Error al decodificar el token:', error); 
-            }
-          }
-        };
-        verificarExpiracionToken();
-      }, []);
-//  ----------------------------------
-    return (
-        <div className='button-container'>
-            <LinkButton
-                className={"header-button"}
-                path={"/home"}
-                title={"Home"}
-            />
-            <LinkButton
-                className={"header-button"}
-                path={"/workers"}
-                title={"Workers"}
-            />
-            <LinkButton
-                className={"header-button"}
-                path={"/portfolio"}
-                title={"Portfolio"}
-            />
-            {
-                rdxToken && tokenExpired == false
-                    ? (
-                        <>
+        Navigate("/")
+    } 
+    
+return (
+    <div className='button-container'>
+        <LinkButton
+            className={"header-button"}
+            path={"/home"}
+            title={"Home"}
+        />
+        <LinkButton
+            className={"header-button"}
+            path={"/workers"}
+            title={"Workers"}
+        />
+        <LinkButton
+            className={"header-button"}
+            path={"/portfolio"}
+            title={"Portfolio"}
+        />
+        {
+            rdxToken && tokenExpired == false
+                ? (
+                    <>
+                        <LinkButton
+                            className={"header-button"}
+                            path={"/profile"}
+                            title={"Profile"}
+                        />
+                        <LinkButton
+                            className={"header-button"}
+                            path={"/appointments"}
+                            title={"Appointments"}
+                        />
+                        <div className='header-button' onClick={logOutMe}>
                             <LinkButton
-                                className={"header-button"}
-                                path={"/profile"}
-                                title={"Profile"}
-                            />
-                            <LinkButton
-                                className={"header-button"}
-                                path={"/appointments"}
-                                title={"Appointments"}
-                            />
-                            <div className='header-button' onClick={logOutMe}>
-                                <LinkButton
-                                    classButton={"linkButtonDesign"}
-                                    path={"/login"}
-                                    title={"log out"}
-                                />
-                            </div>
- 
-                            {decodedToken && decodedToken.role === "super_admin" &&
-                                (
-                                    <>
-                                        <LinkButton
-                                            className={"header-button"}
-                                            path={"/getAllUsers"}
-                                            title={"All Users"}
-                                        />
-                                        <LinkButton
-                                            className={"header-button"}
-                                            path={"/getAllAppointments"}
-                                            title={"GetAllAppointments"}
-                                        />
-                                    </>
-                                )}
-                        </>
-                    ) :
-                    (
-                        <>
-                            <LinkButton
-                                className={"header-button"}
+                                classButton={"linkButtonDesign"}
                                 path={"/login"}
-                                title={"Login"}
+                                title={"log out"}
                             />
-                            <LinkButton
-                                className={"header-button"}
-                                path={"/register"}
-                                title={"Register"}
-                            />
-                        </>
-                    )
-            }
-        </div >
-    );
+                        </div>
+
+                        {decodedToken && decodedToken.role === "super_admin" &&
+                            (
+                                <>
+                                    <LinkButton
+                                        className={"header-button"}
+                                        path={"/getAllUsers"}
+                                        title={"All Users"}
+                                    />
+                                    <LinkButton
+                                        className={"header-button"}
+                                        path={"/getAllAppointments"}
+                                        title={"GetAllAppointments"}
+                                    />
+                                </>
+                            )}
+                    </>
+                ) :
+                (
+                    <>
+                        <LinkButton
+                            className={"header-button"}
+                            path={"/login"}
+                            title={"Login"}
+                        />
+                        <LinkButton
+                            className={"header-button"}
+                            path={"/register"}
+                            title={"Register"}
+                        />
+                    </>
+                )
+        }
+    </div >
+);
 };
 
 
