@@ -94,7 +94,7 @@ export const Login = () => {
                         design={"inputDesign"}
                         type={"password"}
                         name={"password"}
-                        placeholder={"Aa1234@"}
+                        placeholder={"Password"}
                         functionProp={functionHandler}
                         functionBlur={errorCheck}
                     />

@@ -34,6 +34,7 @@ export const UpdateAppointment = () => {
     const [stop, setStop] = useState(false)
 
     useEffect(() => {
+        console.log("aqui");
         if (rdxToken && rdxIdtoUpdate) {
             if (stop == false) {
                 setAppointment((prevState) => ({ ...prevState, id: rdxIdtoUpdate }));

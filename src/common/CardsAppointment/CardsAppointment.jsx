@@ -58,7 +58,7 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                                 </div>}
                             />
                         </div>
-                        
+
                     </div>
                 )
                 : (
@@ -69,7 +69,7 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
                         <div className="shift">{shift}</div>
                         <div className="desc-row">Category Product : </div>
                         <div className="service"> {categoryProduct}</div>
-                        <div className="status"> {status}</div> 
+                        <div className="status"> {status}</div>
                         <div className="client_email">{client_email} </div>
                     </div>
                 )

@@ -107,7 +107,7 @@ export const Register = () => {
     return (
         <div className="register-body">
             <div className="input-card-register">
-                <div className="title-login">Login</div>
+                <div className="title-login">Register</div>
                 <div className="inputs-register-container">
                     <CustomInput
                         design={"inputDesign"}
@@ -144,12 +144,13 @@ export const Register = () => {
                         functionProp={functionHandler}
                         functionBlur={errorCheck}
                     />
+                    <div className="not-necesarilly">* Optional</div>
                     <div className='errorMsg'>{credentialsError.phone_numberError}</div>
                     <CustomInput
                         design={"inputDesign"}
                         type={"text"}
                         name={"photo"}
-                        placeholder={"URL photo"}
+                        placeholder={"Introduce an URL image"}
                         functionProp={functionHandler}
                         functionBlur={errorCheck}
                     />

@@ -86,6 +86,17 @@ margin-top: 2em;
     outline: none;
     box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
   }
+
+  .not-necesarilly{
+    height:1em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 0.8em;
+    margin-top: 0;
+    font-size: 0.6em;
+    color: rgb(255, 136, 0);
+  }
   
   @media (prefers-reduced-motion: reduce) {
     .animated-button {
