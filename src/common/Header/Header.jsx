@@ -12,7 +12,7 @@ export const Header = () => {
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
     const [decodedToken, setDecodedToken] = useState(null);
-    
+    const [tokenExpired, setTokenExpired] = useState(false);
 
     useEffect(() => {
         try {
@@ -26,8 +26,8 @@ export const Header = () => {
     const logOutMe = () => {
         dispatch(logout())
         Navigate("/")
-    } 
-    
+    }
+ 
 return (
     <div className='button-container'>
         <LinkButton
