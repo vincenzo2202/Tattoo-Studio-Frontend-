@@ -2,7 +2,7 @@ import "./CreateAppointment.css"
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { validator } from "../../services/Validations";
+import { validator } from "../../services/validations";
 import { createAppointment, getPortfolio, getWorkers } from "../../services/apiCalls";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 
