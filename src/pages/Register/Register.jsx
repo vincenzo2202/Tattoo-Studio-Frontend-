@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Register.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { useNavigate } from "react-router-dom";
-import { validator } from "../../services/Validations";
+import { validator } from "../../services/validations";
 import { logUser, registerUser } from "../../services/apiCalls";
 
 import { useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
