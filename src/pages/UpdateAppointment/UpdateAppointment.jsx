@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./UpdateAppointment.css"
 import { getPortfolio, getWorkers, updateAppointment } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
-import { validator } from "../../services/Validations";
+import { validator } from "../../services/validations";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import ShiftToggle from "../../common/ShiftToggle/ShiftToggle";
 

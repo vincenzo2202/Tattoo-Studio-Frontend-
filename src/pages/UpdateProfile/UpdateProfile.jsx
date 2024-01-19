@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./UpdateProfile.css"
 import { useNavigate } from "react-router-dom";
-import { validator } from "../../services/Validations";
+import { validator } from "../../services/validations";
 import { updateUser } from "../../services/apiCalls";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 
