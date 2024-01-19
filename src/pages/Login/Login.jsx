@@ -3,7 +3,7 @@ import "./Login.css"
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { useNavigate } from "react-router-dom";
 import { logUser } from "../../services/apiCalls";
-import { validator } from "../../services/Validations";
+import { validator } from "../../services/validations";
 
 //Importo Rdx
 
@@ -44,12 +44,9 @@ export const Login = () => {
         }));
     };
 
-    const errorCheck = (e) => {
-
-        let error = "";
-
-        error = validator(e.target.name, e.target.value);
-
+    const errorCheck = (e) => { 
+        let error = ""; 
+        error = validator(e.target.name, e.target.value); 
         setCredentialsError((prevState) => ({
             ...prevState,
             [e.target.name + 'Error']: error,

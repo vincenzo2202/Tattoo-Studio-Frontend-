@@ -82,8 +82,7 @@ export const Register = () => {
     };
 
     useEffect(() => {
-        if (message == "user registered succesfully") {
-            console.log("hola");
+        if (message == "user registered succesfully") { 
             console.log(credentials);
             logUser(credentials)
                 .then((response) => {

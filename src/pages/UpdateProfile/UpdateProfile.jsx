@@ -41,8 +41,7 @@ export const UpdateProfile = () => {
         }));
     };
 
-    const errorCheck = (e) => {
-
+    const errorCheck = (e) => { 
         let error = "";
         error = validator(e.target.name, e.target.value);
 

@@ -12,13 +12,13 @@ export const CardsAppointments = ({ nameProduct, imageProduct, categoryProduct, 
     };
 
     return (
-        <div className="card-appointment" key={appointmentId}>
+        <div className="card-appointment" key={appointmentId}  >
             <button className="button-spoiler" onClick={toggleCollapse}>
                 {collapsed ? "Details" : "Hide"}
             </button>
             {!collapsed
                 ? (
-                    <div className="card-appointment-board">
+                    <div className="card-appointment-board" >
                         <div className="left picture">
                             <div className="nameProduct">{nameProduct}</div>
                             <img className="pic" src={imageProduct} alt={nameProduct} />

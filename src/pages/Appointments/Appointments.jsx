@@ -89,12 +89,13 @@ export const Appointments = () => {
 
             {
                 appointment
-                    ? (<div className='appointments-Roster'>
+                    ? (<div className='appointments-Roster' >
 
                         {
                             appointment.map(appointment => {
                                 return (
-                                    <CardsAppointments
+                                    <CardsAppointments 
+                                        key={appointment.id}
                                         appointmentId={appointment.id}
                                         nameProduct={appointment.name}
                                         imageProduct={appointment.image}
